@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import app.earthcpr.sol.screens.join.JoinScreen
 import app.earthcpr.sol.screens.login.LoginScreen
 import app.earthcpr.sol.ui.theme.SolApplicationTheme
 import app.earthcpr.sol.utils.PreferenceUtil
@@ -71,6 +72,12 @@ fun MyApp() {
         composable(route = "loginScreen") {
             LoginScreen(
                 navigationToHomeScreen = { navController.navigate("navMainScreen") },
+                navigationToJoinScreen = { navController.navigate("joinScreen") },
+            )
+        }
+        composable(route = "joinScreen") {
+            JoinScreen(
+                navigationToLoginScreen = { navController.navigate("loginScreen") },
             )
         }
     }
