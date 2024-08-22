@@ -44,6 +44,7 @@ import app.earthcpr.sol.ui.theme.newFontFamily
 @Composable
 fun LoginScreen(
     navigationToHomeScreen: () -> Unit,
+    navigationToJoinScreen: () -> Unit,
 ) {
     val context = LocalContext.current
     val loginViewModel: LoginViewModel = viewModel()
@@ -204,7 +205,7 @@ fun LoginScreen(
                         .fillMaxWidth()
                         .background(color = Color.White)
                         .clickable {
-                            // todo
+                            navigationToJoinScreen()
                         },
                     contentAlignment = Alignment.Center,
                 ) {
@@ -229,6 +230,10 @@ fun LoginScreen(
             loginViewModel.failStateInit()
         }
     }
+}
+
+fun createAccount(email: String, password: String, navigate: () -> Unit) {
+
 }
 
 @Composable

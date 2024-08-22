@@ -1,6 +1,7 @@
 package app.earthcpr.sol.services
 
 import app.earthcpr.sol.models.ApiResponse
+import app.earthcpr.sol.models.JoinRequestBody
 import app.earthcpr.sol.models.LoginRequestBody
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
@@ -68,6 +69,11 @@ interface ApiService {
 //    @POST("/reward/daily")
 //    suspend fun postDailyReward(@Body request: UserIdRequest): ApiResponse<String>
 
+    // [API] 로그인
     @POST("/login")
     suspend fun postLogin(@Body request: LoginRequestBody): ApiResponse<String>
+
+    // [API] 회원가입
+    @POST("/user")
+    suspend fun postJoin(@Body request: JoinRequestBody): ApiResponse<String>
 }
