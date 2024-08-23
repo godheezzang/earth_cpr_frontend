@@ -1,6 +1,5 @@
 package app.earthcpr.sol.screens.join
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -29,7 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -37,6 +36,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import app.earthcpr.sol.R
 import app.earthcpr.sol.ui.theme.newFontFamily
 
 @Composable
@@ -48,7 +48,6 @@ fun JoinScreen(
     val isPasswordTooShort by joinViewModel.isPasswordTooShort
     val isUserNameEmpty by joinViewModel.isUserNameEmpty
     val joinButtonEnable by joinViewModel.joinButtonEnable
-    Log.d("annmj", joinButtonEnable.toString())
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var userName by remember { mutableStateOf("") }
@@ -57,9 +56,10 @@ fun JoinScreen(
     val joinButtonColor = if (!joinButtonEnable) Color(0xFF80A2FF) else Color(0xFF0046FF)
     Column(
         modifier = Modifier
+            .background(color = colorResource(id = R.color.bgColor))
             .fillMaxSize()
-            .padding(16.dp)
-            .background(Color.White),
+            .padding(start = 16.dp)
+            ,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

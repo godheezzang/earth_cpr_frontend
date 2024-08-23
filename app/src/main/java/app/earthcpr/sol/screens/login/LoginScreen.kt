@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -43,7 +44,8 @@ import app.earthcpr.sol.ui.theme.newFontFamily
 
 @Composable
 fun LoginScreen(
-    navigationToHomeScreen: () -> Unit,
+//    navigationToHomeScreen: () -> Unit,
+    navigationToHomeScreen: (String) -> Unit,
     navigationToJoinScreen: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -52,13 +54,15 @@ fun LoginScreen(
 
     // 이미 로그인 했다면
     if (loginViewModel.checkAlreadyLogin()) {
-        navigationToHomeScreen()
+//        navigationToHomeScreen()
+        navigationToHomeScreen("tempId")
     }
 
     fun postLogin(): Unit {
         loginViewModel.login {
             // 홈 화면으로 이동
-            navigationToHomeScreen()
+//            navigationToHomeScreen()
+            navigationToHomeScreen("tempId")
         }
     }
 
@@ -75,8 +79,8 @@ fun LoginScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
-                    .background(Color.White),
+                    .background(color = colorResource(id = R.color.bgColor))
+                    .padding(16.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -185,7 +189,7 @@ fun LoginScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable {
-                                // todo
+                                postLogin()
                             },
                         contentAlignment = Alignment.Center,
                     ) {
@@ -203,7 +207,7 @@ fun LoginScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(color = Color.White)
+                        .background(color = colorResource(id = R.color.bgColor))
                         .clickable {
                             navigationToJoinScreen()
                         },

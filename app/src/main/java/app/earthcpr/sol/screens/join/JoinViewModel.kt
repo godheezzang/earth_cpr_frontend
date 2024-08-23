@@ -5,8 +5,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.earthcpr.sol.models.JoinRequestBody
-import app.earthcpr.sol.services.apiService
+import app.earthcpr.sol.models.api.request.JoinRequestBody
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package app.earthcpr.sol.models
+package app.earthcpr.sol.models.api.response
 
 data class UserCoinResponse(
     val userUuid: String,

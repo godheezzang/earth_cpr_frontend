@@ -1,8 +1,8 @@
 package app.earthcpr.sol.services
 
-import app.earthcpr.sol.models.ApiResponse
-import app.earthcpr.sol.models.JoinRequestBody
-import app.earthcpr.sol.models.LoginRequestBody
+import app.earthcpr.sol.models.api.response.ApiResponse
+import app.earthcpr.sol.models.api.request.JoinRequestBody
+import app.earthcpr.sol.models.api.request.LoginRequestBody
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -76,4 +76,8 @@ interface ApiService {
     // [API] 회원가입
     @POST("/user")
     suspend fun postJoin(@Body request: JoinRequestBody): ApiResponse<String>
+
+    // [API] 적금 계좌 등록
+    @POST("/api/v1/save/create/savingaccount")
+    suspend fun postSavingAccount(@Body request: JoinRequestBody): ApiResponse<String>
 }
