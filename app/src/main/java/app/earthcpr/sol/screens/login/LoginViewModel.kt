@@ -28,7 +28,8 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         onSuccess: () -> Unit
     ) {
         try {
-            fetchPostLogin(onSuccess)
+//            fetchPostLogin(onSuccess)
+            onSuccess()
         } catch (e: Exception) {
 
         }

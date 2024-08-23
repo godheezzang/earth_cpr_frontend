@@ -1,4 +1,4 @@
-package app.earthcpr.sol.models
+package app.earthcpr.sol.models.api.request
 
 import com.google.gson.annotations.SerializedName
 

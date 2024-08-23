@@ -8,11 +8,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import app.earthcpr.sol.screens.join.JoinScreen
 import app.earthcpr.sol.screens.login.LoginScreen
+import app.earthcpr.sol.screens.savings.accountdetail.SavingAccountDetailScreen
+import app.earthcpr.sol.screens.savings.money.SavingCreateScreen
+import app.earthcpr.sol.screens.savings.month.SavingMonthSelectScreen
+import app.earthcpr.sol.screens.savings.myaccountlist.MySavingAccountListScreen
+import app.earthcpr.sol.screens.savings.success.SavingCreateAccountSuccessScreen
 import app.earthcpr.sol.ui.theme.SolApplicationTheme
 import app.earthcpr.sol.utils.PreferenceUtil
 
@@ -71,13 +78,77 @@ fun MyApp() {
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = "loginScreen") {
             LoginScreen(
-                navigationToHomeScreen = { navController.navigate("navMainScreen") },
+//                navigationToHomeScreen = { navController.navigate("homeScreen") },
+                navigationToHomeScreen = { accountTypeUniqueNo ->
+                    navController.navigate("savingCreateScreen?accountTypeUniqueNo=$accountTypeUniqueNo")
+                },
+
                 navigationToJoinScreen = { navController.navigate("joinScreen") },
             )
         }
         composable(route = "joinScreen") {
             JoinScreen(
                 navigationToLoginScreen = { navController.navigate("loginScreen") },
+            )
+        }
+        composable(
+            "savingCreateScreen?accountTypeUniqueNo={accountTypeUniqueNo}",
+            arguments = listOf(navArgument("accountTypeUniqueNo") { type = NavType.StringType })
+
+        ) { backStackEntry ->
+            val accountTypeUniqueNo =
+                backStackEntry.arguments?.getString("accountTypeUniqueNo") ?: ""
+
+            SavingCreateScreen(
+                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToMonthSelectScreen = { savingMoneyText ->
+                    navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText")
+                },
+                accountTypeUniqueNo = accountTypeUniqueNo
+            )
+        }
+        composable(
+            "savingMonthSelectScreen?savingMoneyText={savingMoneyText}",
+            arguments = listOf(navArgument("savingMoneyText") { type = NavType.StringType })
+
+        ) { backStackEntry ->
+            val savingMoneyText = backStackEntry.arguments?.getString("savingMoneyText") ?: ""
+
+            SavingMonthSelectScreen(
+                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToSavingAccountSuccessScreen = { navController.navigate("savingCreateAccountSuccessScreen") },
+                depositBalance = savingMoneyText
+            )
+        }
+        composable(
+            "savingCreateAccountSuccessScreen"
+        ) {
+            SavingCreateAccountSuccessScreen(
+                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToMyAccountListScreen = { navController.navigate("mySavingAccountListScreen") },
+            )
+        }
+        composable(
+            "mySavingAccountListScreen"
+        ) {
+            MySavingAccountListScreen(
+                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                // todo 변경필요
+                navigationToAccountDetailScreen = { accountNo ->
+                    navController.navigate("savingAccountDetailScreen?accountNo=$accountNo")
+                }
+            )
+        }
+        composable(
+            "savingAccountDetailScreen?accountNo={accountNo}",
+            arguments = listOf(navArgument("accountNo") { type = NavType.StringType })
+
+        ) { backStackEntry ->
+            val accountNo = backStackEntry.arguments?.getString("accountNo") ?: ""
+
+            SavingAccountDetailScreen(
+                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                accountNo = accountNo
             )
         }
     }
