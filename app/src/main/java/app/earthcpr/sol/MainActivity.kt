@@ -21,6 +21,7 @@ import app.earthcpr.sol.screens.savings.money.SavingCreateScreen
 import app.earthcpr.sol.screens.savings.month.SavingMonthSelectScreen
 import app.earthcpr.sol.screens.savings.myaccountlist.MySavingAccountListScreen
 import app.earthcpr.sol.screens.savings.success.SavingCreateAccountSuccessScreen
+import app.earthcpr.sol.screens.savings.productlist.ProductListScreen
 import app.earthcpr.sol.ui.theme.SolApplicationTheme
 import app.earthcpr.sol.utils.PreferenceUtil
 
@@ -90,8 +91,15 @@ fun MyApp() {
             )
         }
         composable("homeScreen") {
-            HomeScreen()
-
+            HomeScreen(
+                navigationToAccountDetailScreen = { accountNo ->
+                    navController.navigate("savingAccountDetailScreen?accountNo=$accountNo")
+                },
+                navigationToProductListScreen = { navController.navigate("productListScreen") }
+            )
+        }
+        composable("productListScreen") {
+            ProductListScreen()
         }
         composable(
             "savingCreateScreen?accountTypeUniqueNo={accountTypeUniqueNo}",
@@ -102,7 +110,7 @@ fun MyApp() {
                 backStackEntry.arguments?.getString("accountTypeUniqueNo") ?: ""
 
             SavingCreateScreen(
-                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
                 navigationToMonthSelectScreen = { savingMoneyText ->
                     navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText")
                 },
@@ -117,7 +125,7 @@ fun MyApp() {
             val savingMoneyText = backStackEntry.arguments?.getString("savingMoneyText") ?: ""
 
             SavingMonthSelectScreen(
-                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
                 navigationToSavingAccountSuccessScreen = { navController.navigate("savingCreateAccountSuccessScreen") },
                 depositBalance = savingMoneyText
             )
@@ -126,7 +134,7 @@ fun MyApp() {
             "savingCreateAccountSuccessScreen"
         ) {
             SavingCreateAccountSuccessScreen(
-                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
                 navigationToMyAccountListScreen = { navController.navigate("mySavingAccountListScreen") },
             )
         }
@@ -134,7 +142,7 @@ fun MyApp() {
             "mySavingAccountListScreen"
         ) {
             MySavingAccountListScreen(
-                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
                 // todo 변경필요
                 navigationToAccountDetailScreen = { accountNo ->
                     navController.navigate("savingAccountDetailScreen?accountNo=$accountNo")
@@ -149,7 +157,7 @@ fun MyApp() {
             val accountNo = backStackEntry.arguments?.getString("accountNo") ?: ""
 
             SavingAccountDetailScreen(
-                navigationToHomeScreen = { navController.navigate("loginScreen") },
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
                 accountNo = accountNo
             )
         }

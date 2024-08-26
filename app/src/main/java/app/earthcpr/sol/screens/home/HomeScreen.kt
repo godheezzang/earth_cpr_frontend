@@ -1,77 +1,75 @@
 package app.earthcpr.sol.screens.home
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import app.earthcpr.sol.screens.savings.myaccountlist.MySavingAccount
 import app.earthcpr.sol.screens.topbar.TopBar
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navigationToAccountDetailScreen: (String) -> Unit,
+    navigationToProductListScreen: () -> Unit
+) {
+    val context = LocalContext.current
+    val homeViewModel: HomeViewModel = viewModel()
+    val homeModel by homeViewModel.homeModel
+    val selectedAccountNo by homeViewModel.selectedAccountNo
+
+    val scrollState = rememberScrollState()
+    if (selectedAccountNo.isNotEmpty()) {
+        navigationToAccountDetailScreen(selectedAccountNo)
+        homeViewModel.initSelectedAccountNo()
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFEDF0F8))
             .padding(16.dp)
     ) {
-        TopBar(title = "메인", showHomeButton = false)
-        Spacer(modifier = Modifier.height(108.dp))
+        TopBar(title = "마이", showHomeButton = false)
+        Spacer(modifier = Modifier.height(16.dp))
 
         val hasSavings = false
         if (hasSavings) {
-            SavingsExistLayout()
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(scrollState)
+            ) {
+                homeModel.accountList.forEach { account ->
+                    MySavingAccount(account)
+                }
+            }
         } else {
-            SavingsEmptyLayout()
-        }
-    }
-}
-
-@Composable
-fun SavingsExistLayout() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White)
-            .padding(16.dp)
-    ) {
-        SavingsItem("ESG", "ESG 챌린지 적금", "500,000원")
-        Divider(modifier = Modifier.padding(vertical = 8.dp))
-        SavingsItem("WELL", "웰니스 챌린지 적금", "500,000원")
-    }
-}
-
-@Composable
-fun SavingsItem(tag: String, title: String, amount: String) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Column {
-            Text(
-                text = tag,
-                fontSize = 14.sp,
-                color = Color.Gray
-            )
-            Text(
-                text = title,
-                fontSize = 16.sp
+            SavingsEmptyLayout(
+                navigationToProductListScreen()
             )
         }
-        Text(
-            text = amount,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold
-        )
     }
 }
 
+
 @Composable
-fun SavingsEmptyLayout() {
+fun SavingsEmptyLayout(
+    navigationToProductListScreen: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
