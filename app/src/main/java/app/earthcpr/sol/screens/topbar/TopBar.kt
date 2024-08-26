@@ -24,7 +24,8 @@ import app.earthcpr.sol.ui.theme.newFontFamily
 @Composable
 fun TopBar(
     title: String,
-    navigationToHomeScreen: () -> Unit
+    showHomeButton: Boolean = true,
+    navigationToHomeScreen: (() -> Unit)? = null
 ) {
     Row(
         modifier = Modifier
@@ -34,7 +35,9 @@ fun TopBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Box {
-            HomeScreenButton(navigationToHomeScreen)
+            if (showHomeButton) {
+                HomeScreenButton(navigationToHomeScreen)
+            }
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
@@ -54,12 +57,12 @@ fun TopBar(
 }
 
 @Composable
-fun HomeScreenButton(navigationToHomeScreen: () -> Unit) {
+fun HomeScreenButton(navigationToHomeScreen: (() -> Unit)?) {
     Box(
         modifier = Modifier
             .padding(start = 17.dp)
             .clickable {
-                navigationToHomeScreen()
+                navigationToHomeScreen?.invoke()
             },
     ) {
         Image(

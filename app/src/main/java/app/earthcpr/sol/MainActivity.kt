@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import app.earthcpr.sol.screens.join.JoinScreen
 import app.earthcpr.sol.screens.login.LoginScreen
+import app.earthcpr.sol.screens.home.HomeScreen
 import app.earthcpr.sol.screens.savings.accountdetail.SavingAccountDetailScreen
 import app.earthcpr.sol.screens.savings.money.SavingCreateScreen
 import app.earthcpr.sol.screens.savings.month.SavingMonthSelectScreen
@@ -78,10 +79,7 @@ fun MyApp() {
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = "loginScreen") {
             LoginScreen(
-//                navigationToHomeScreen = { navController.navigate("homeScreen") },
-                navigationToHomeScreen = { accountTypeUniqueNo ->
-                    navController.navigate("savingCreateScreen?accountTypeUniqueNo=$accountTypeUniqueNo")
-                },
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
 
                 navigationToJoinScreen = { navController.navigate("joinScreen") },
             )
@@ -90,6 +88,10 @@ fun MyApp() {
             JoinScreen(
                 navigationToLoginScreen = { navController.navigate("loginScreen") },
             )
+        }
+        composable("homeScreen") {
+            HomeScreen()
+
         }
         composable(
             "savingCreateScreen?accountTypeUniqueNo={accountTypeUniqueNo}",
