@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100985995659",
+    "project_id": "earth-cpr",
+    "storage_bucket": "earth-cpr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100985995659:android:8d29c39e7a1fedceed2f8e",
+        "android_client_info": {
+          "package_name": "app.earthcpr.sol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBePJD_ZWU4vk8I1YpnXshI4Ihz_R2tzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
