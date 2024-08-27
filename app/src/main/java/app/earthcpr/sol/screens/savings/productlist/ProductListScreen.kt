@@ -41,7 +41,8 @@ import java.util.Locale
 
 @Composable
 fun ProductListScreen(
-    navigationToHomeScreen: () -> Unit
+    navigationToHomeScreen: () -> Unit,
+    navigationToMyDepositAccountListScreen: (String) -> Unit
 ) {
     val context = LocalContext.current
     val viewModel: ProductListViewModel = viewModel()
@@ -75,7 +76,8 @@ fun ProductListScreen(
                     isExpanded = isExpanded,
                     onToggle = {
                         expandedCardStates[index] = !isExpanded
-                    }
+                    },
+                    navigationToMyDepositAccountListScreen
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -88,7 +90,8 @@ fun ProductListScreen(
 fun SavingsCardWithToggle(
     cardInfo: ProductAccount,
     isExpanded: Boolean,
-    onToggle: () -> Unit
+    onToggle: () -> Unit,
+    navigationToMyDepositAccountListScreen: (String) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -231,7 +234,8 @@ fun SavingsCardWithToggle(
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable {
-                                Log.d("godhezzang", "가입하기 버튼")
+                                Log.d("godhezzang", cardInfo.accountTypeUniqueNo)
+                                navigationToMyDepositAccountListScreen(cardInfo.accountTypeUniqueNo)
                             },
                         contentAlignment = Alignment.Center,
                     ) {

@@ -209,7 +209,7 @@ fun MySavingAccount(account: MyAccount) {
                     fontFamily = newFontFamily,
                     fontWeight = FontWeight.Normal
                 )
-                Spacer(modifier = Modifier.width(50.dp))
+                Spacer(modifier = Modifier.width(30.dp))
                 // 원하는 로케일을 지정
                 val locale = Locale("ko") // 또는 Locale("en", "US") 등
                 val symbols = DecimalFormatSymbols(locale)
