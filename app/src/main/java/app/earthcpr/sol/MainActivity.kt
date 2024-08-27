@@ -18,9 +18,10 @@ import app.earthcpr.sol.screens.login.LoginScreen
 import app.earthcpr.sol.screens.home.HomeScreen
 import app.earthcpr.sol.screens.savings.accountdetail.SavingAccountDetailScreen
 import app.earthcpr.sol.screens.savings.accountlist.ProductListScreen
-import app.earthcpr.sol.screens.savings.money.SavingCreateScreen
+import app.earthcpr.sol.screens.savings.money.SavingCreateMoneyByAccountUniqueNoScreen
 import app.earthcpr.sol.screens.savings.month.SavingMonthSelectScreen
 import app.earthcpr.sol.screens.savings.myaccountlist.MySavingAccountListScreen
+import app.earthcpr.sol.screens.savings.mydepositaccountlist.MyDepositAccountListScreen
 import app.earthcpr.sol.screens.savings.success.SavingCreateAccountSuccessScreen
 import app.earthcpr.sol.ui.theme.SolApplicationTheme
 import app.earthcpr.sol.utils.PreferenceUtil
@@ -100,36 +101,64 @@ fun MyApp() {
         }
         composable("productListScreen") {
             ProductListScreen(
-                navigationToHomeScreen = { navController.navigate("homeScreen") }
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
+                navigationToMyDepositAccountListScreen = { accountTypeUniqueNo ->
+                    navController.navigate("myDepositAccountListScreen?accountTypeUniqueNo=$accountTypeUniqueNo")
+                },
             )
         }
-        composable(
-            "savingCreateScreen?accountTypeUniqueNo={accountTypeUniqueNo}",
-            arguments = listOf(navArgument("accountTypeUniqueNo") { type = NavType.StringType })
-
-        ) { backStackEntry ->
+        composable("myDepositAccountListScreen?accountTypeUniqueNo={accountTypeUniqueNo}")
+        { backStackEntry ->
             val accountTypeUniqueNo =
                 backStackEntry.arguments?.getString("accountTypeUniqueNo") ?: ""
 
-            SavingCreateScreen(
+            MyDepositAccountListScreen(
                 navigationToHomeScreen = { navController.navigate("homeScreen") },
-                navigationToMonthSelectScreen = { savingMoneyText ->
-                    navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText")
+                navigationToSavingCreateScreen = { accountTypeUniqueNo, accountNo ->
+                    navController.navigate("savingCreateMoneyByAccountUniqueNoScreen?accountTypeUniqueNo=${accountTypeUniqueNo}&accountNo=${accountNo}")
                 },
                 accountTypeUniqueNo = accountTypeUniqueNo
             )
         }
         composable(
-            "savingMonthSelectScreen?savingMoneyText={savingMoneyText}",
-            arguments = listOf(navArgument("savingMoneyText") { type = NavType.StringType })
+            "savingCreateMoneyByAccountUniqueNoScreen?accountTypeUniqueNo={accountTypeUniqueNo}&accountNo={accountNo}",
+            arguments = listOf(
+                navArgument("accountTypeUniqueNo") { type = NavType.StringType },
+                navArgument("accountNo") { type = NavType.StringType })
+
+        ) { backStackEntry ->
+            val accountTypeUniqueNo =
+                backStackEntry.arguments?.getString("accountTypeUniqueNo") ?: ""
+            val accountNo =
+                backStackEntry.arguments?.getString("accountNo") ?: ""
+
+            SavingCreateMoneyByAccountUniqueNoScreen(
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
+                navigationToMonthSelectScreen = { savingMoneyText, accountTypeUniqueNo, accountNo ->
+                    navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText&accountTypeUniqueNo=$accountTypeUniqueNo&accountNo=$accountNo")
+                },
+                accountTypeUniqueNo = accountTypeUniqueNo,
+                accountNo = accountNo
+            )
+        }
+        composable(
+            "savingMonthSelectScreen?savingMoneyText={savingMoneyText}&accountTypeUniqueNo={accountTypeUniqueNo}&accountNo={accountNo}",
+            arguments = listOf(
+                navArgument("savingMoneyText") { type = NavType.StringType },
+                navArgument("accountTypeUniqueNo") { type = NavType.StringType },
+                navArgument("accountNo") { type = NavType.StringType })
 
         ) { backStackEntry ->
             val savingMoneyText = backStackEntry.arguments?.getString("savingMoneyText") ?: ""
+            val accountTypeUniqueNo = backStackEntry.arguments?.getString("accountTypeUniqueNo") ?: ""
+            val accountNo = backStackEntry.arguments?.getString("accountNo") ?: ""
 
             SavingMonthSelectScreen(
                 navigationToHomeScreen = { navController.navigate("homeScreen") },
                 navigationToSavingAccountSuccessScreen = { navController.navigate("savingCreateAccountSuccessScreen") },
-                depositBalance = savingMoneyText
+                depositBalance = savingMoneyText,
+                accountTypeUniqueNo = accountTypeUniqueNo,
+                accountNo = accountNo
             )
         }
         composable(

@@ -36,10 +36,11 @@ import app.earthcpr.sol.screens.topbar.TopBar
 import app.earthcpr.sol.ui.theme.newFontFamily
 
 @Composable
-fun SavingCreateScreen(
+fun SavingCreateMoneyByAccountUniqueNoScreen(
     navigationToHomeScreen: () -> Unit,
-    navigationToMonthSelectScreen: (String) -> Unit,
-    accountTypeUniqueNo: String
+    navigationToMonthSelectScreen: (String, String, String) -> Unit,
+    accountTypeUniqueNo: String, // 적금 상품 unique number
+    accountNo: String // 입출금 계좌번호
 ) {
     val context = LocalContext.current
 
@@ -151,7 +152,7 @@ fun SavingCreateScreen(
                     .fillMaxSize()
                     .clickable {
                         if (enableNextButton) {
-                            navigationToMonthSelectScreen(savingMoneyText)
+                            navigationToMonthSelectScreen(savingMoneyText, accountTypeUniqueNo, accountNo)
                         }
                     },
                 contentAlignment = Alignment.Center,

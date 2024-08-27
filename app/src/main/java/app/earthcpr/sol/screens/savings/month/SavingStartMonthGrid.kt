@@ -61,10 +61,12 @@ fun SavingStartMonth(param: SavingMonth) {
             .height(50.dp)
             .padding(3.dp)
             .clickable {
-                param.onClick()
+                if (param.month != "6개월") {
+                    param.onClick()
+                }
             },
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
+            containerColor = if (param.month != "6개월") Color.White else Color.LightGray,
         ),
         border = BorderStroke(1.dp, color = if (param.isSelected) colorResource(id = R.color.box_border_selected_color) else colorResource(id = R.color.box_border_color)),
         shape = RoundedCornerShape(10.dp),
@@ -79,6 +81,7 @@ fun SavingStartMonth(param: SavingMonth) {
                 fontFamily = newFontFamily,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 14.sp,
+                color = if (param.month != "6개월") Color.Black else Color.White
             )
 
         }

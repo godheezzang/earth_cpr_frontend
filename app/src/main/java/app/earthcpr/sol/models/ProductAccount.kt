@@ -4,6 +4,7 @@ package app.earthcpr.sol.models
 data class ProductAccount(
     val increaseInterestRate: String,
     val challengeList: List<Challenge>?,
+    val accountTypeUniqueNo: String,
     val accountName: String,
     val bankCode: String,
     val accountDescription: String,

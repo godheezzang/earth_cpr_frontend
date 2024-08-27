@@ -1,5 +1,6 @@
 package app.earthcpr.sol.screens.savings.month
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,8 +36,11 @@ import app.earthcpr.sol.ui.theme.newFontFamily
 fun SavingMonthSelectScreen(
     navigationToHomeScreen: () -> Unit,
     navigationToSavingAccountSuccessScreen: () -> Unit,
-    depositBalance: String
+    depositBalance: String,
+    accountTypeUniqueNo: String,
+    accountNo: String
 ) {
+    Log.d("godhezzang", "depositBalance : $depositBalance, accountTypeUniqueNo : $accountTypeUniqueNo , accountNo $accountNo ")
     val context = LocalContext.current
     val savingMonthViewModel: SavingMonthSelectViewModel = viewModel()
 
@@ -111,6 +115,7 @@ fun SavingMonthSelectScreen(
                     .clickable {
                         if (enableNextButton) {
                             // todo
+                            // api 연동 필요
                              // savingMonthViewModel.createSavingAccount({navigationToSavingAccountSuccessScreen()}, depositBalance)
                             navigationToSavingAccountSuccessScreen()
                         }
