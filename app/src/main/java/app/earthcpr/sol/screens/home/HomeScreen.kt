@@ -41,7 +41,6 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFEDF0F8))
-            .padding(16.dp)
     ) {
         TopBar(title = "마이", showHomeButton = false)
         Spacer(modifier = Modifier.height(16.dp))
@@ -58,9 +57,13 @@ fun HomeScreen(
                 }
             }
         } else {
-            SavingsEmptyLayout(
-                navigationToProductListScreen
-            )
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                SavingsEmptyLayout(
+                    navigationToProductListScreen
+                )
+            }
         }
     }
 }
