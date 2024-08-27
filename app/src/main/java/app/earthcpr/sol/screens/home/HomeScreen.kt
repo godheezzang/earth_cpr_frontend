@@ -59,7 +59,7 @@ fun HomeScreen(
             }
         } else {
             SavingsEmptyLayout(
-                navigationToProductListScreen()
+                navigationToProductListScreen
             )
         }
     }
@@ -87,7 +87,9 @@ fun SavingsEmptyLayout(
             modifier = Modifier.padding(top = 4.dp)
         )
         Button(
-            onClick = { /* 적금 가입 페이지로 이동하는 로직 */ },
+            onClick = {
+                navigationToProductListScreen()
+            },
             modifier = Modifier.padding(top = 8.dp)
         ) {
             Text("적금 가입하기")

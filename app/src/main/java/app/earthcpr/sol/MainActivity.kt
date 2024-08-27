@@ -17,11 +17,11 @@ import app.earthcpr.sol.screens.join.JoinScreen
 import app.earthcpr.sol.screens.login.LoginScreen
 import app.earthcpr.sol.screens.home.HomeScreen
 import app.earthcpr.sol.screens.savings.accountdetail.SavingAccountDetailScreen
+import app.earthcpr.sol.screens.savings.accountlist.ProductListScreen
 import app.earthcpr.sol.screens.savings.money.SavingCreateScreen
 import app.earthcpr.sol.screens.savings.month.SavingMonthSelectScreen
 import app.earthcpr.sol.screens.savings.myaccountlist.MySavingAccountListScreen
 import app.earthcpr.sol.screens.savings.success.SavingCreateAccountSuccessScreen
-import app.earthcpr.sol.screens.savings.productlist.ProductListScreen
 import app.earthcpr.sol.ui.theme.SolApplicationTheme
 import app.earthcpr.sol.utils.PreferenceUtil
 
@@ -99,7 +99,9 @@ fun MyApp() {
             )
         }
         composable("productListScreen") {
-            ProductListScreen()
+            ProductListScreen(
+                navigationToHomeScreen = { navController.navigate("homeScreen") }
+            )
         }
         composable(
             "savingCreateScreen?accountTypeUniqueNo={accountTypeUniqueNo}",
