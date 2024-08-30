@@ -1,5 +1,6 @@
 package app.earthcpr.sol.services
 
+import app.earthcpr.sol.models.api.request.CreateAccountRequestBody
 import app.earthcpr.sol.models.api.response.ApiResponse
 import app.earthcpr.sol.models.api.request.JoinRequestBody
 import app.earthcpr.sol.models.api.request.LoginRequestBody
@@ -48,7 +49,7 @@ val gson = GsonBuilder()
 
 // 엔드포인트를 준비시키고, json converter를 추가해주는 역할을 한다.
 private val retrofit = Retrofit.Builder()
-    .baseUrl("http://127.0.0.1:8080") // todo 서버 배포되면 개발서버 주소로 변경
+    .baseUrl("http://ec2-52-78-171-40.ap-northeast-2.compute.amazonaws.com:8080") // todo 서버 배포되면 개발서버 주소로 변경
     .client(httpClient)
     .addConverterFactory(GsonConverterFactory.create(gson))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
@@ -59,7 +60,6 @@ private val retrofit = Retrofit.Builder()
 // recipeService 가 ApiService 의 getCategories를 호출할 수 있게 해준다.
 // ApiService 내에 여러 fun 들을 추가하면 된다.
 val apiService = retrofit.create(ApiService::class.java)
-
 interface ApiService {
 
     // get, post 예시코드
@@ -70,14 +70,14 @@ interface ApiService {
 //    suspend fun postDailyReward(@Body request: UserIdRequest): ApiResponse<String>
 
     // [API] 로그인
-    @POST("/login")
-    suspend fun postLogin(@Body request: LoginRequestBody): ApiResponse<String>
+    @POST("/api/v1/user/login")
+    suspend fun postLogin(@Body request: LoginRequestBody): ApiResponse<String?>
 
     // [API] 회원가입
-    @POST("/user")
+    @POST("/api/v1/user/create")
     suspend fun postJoin(@Body request: JoinRequestBody): ApiResponse<String>
 
     // [API] 적금 계좌 등록
     @POST("/api/v1/save/create/savingaccount")
-    suspend fun postSavingAccount(@Body request: JoinRequestBody): ApiResponse<String>
+    suspend fun postSavingAccount(@Body request: CreateAccountRequestBody): ApiResponse<String>
 }

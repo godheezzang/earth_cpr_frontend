@@ -5,7 +5,10 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.earthcpr.sol.MainActivity
 import app.earthcpr.sol.models.MyAccount
+import app.earthcpr.sol.models.api.request.CreateAccountRequestBody
+import app.earthcpr.sol.services.apiService
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -47,51 +50,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                             "1회차",
                             2.6,
                             500000L
-                        ) { onClickItem(accountNo = "1234-123-12345") },
-                        MyAccount(
-                            "웰니스 챌린지형 적금",
-                            "2024.08.18",
-                            "2025.08.17",
-                            "1234-123-12345",
-                            "1회차",
-                            2.6,
-                            1000000L
-                        ) { onClickItem(accountNo = "1234-123-12345") },
-                        MyAccount(
-                            "웰니스 챌린지형 적금",
-                            "2024.08.18",
-                            "2025.08.17",
-                            "1234-123-12345",
-                            "1회차",
-                            2.6,
-                            1000000L
-                        ) { onClickItem(accountNo = "1234-123-12345") },
-                        MyAccount(
-                            "웰니스 챌린지형 적금",
-                            "2024.08.18",
-                            "2025.08.17",
-                            "1234-123-12345",
-                            "1회차",
-                            2.6,
-                            1000000L
-                        ) { onClickItem(accountNo = "1234-123-12345") },
-                        MyAccount(
-                            "웰니스 챌린지형 적금",
-                            "2024.08.18",
-                            "2025.08.17",
-                            "1234-123-12345",
-                            "1회차",
-                            2.6,
-                            1000000L
-                        ) { onClickItem(accountNo = "1234-123-12345") },
-                        MyAccount(
-                            "웰니스 챌린지형 적금",
-                            "2024.08.18",
-                            "2025.08.17",
-                            "1234-123-12345",
-                            "1회차",
-                            2.6,
-                            1000000L
                         ) { onClickItem(accountNo = "1234-123-12345") },
                         MyAccount(
                             "웰니스 챌린지형 적금",

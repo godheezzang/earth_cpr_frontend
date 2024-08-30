@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -45,13 +46,31 @@ fun HomeScreen(
         TopBar(title = "마이", showHomeButton = false)
         Spacer(modifier = Modifier.height(16.dp))
 
-        val hasSavings = false
+        val hasSavings = homeModel.accountList.isNotEmpty()
         if (hasSavings) {
+            // 적금 목록
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(scrollState)
             ) {
+                Text(
+                    text = "챌린지",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+
+
+
+                Spacer(modifier = Modifier.height(24.dp))
+                Text(
+                    text = "적금",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+
                 homeModel.accountList.forEach { account ->
                     MySavingAccount(account)
                 }

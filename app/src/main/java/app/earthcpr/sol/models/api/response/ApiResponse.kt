@@ -1,7 +1,10 @@
 package app.earthcpr.sol.models.api.response
 
+import coil.compose.AsyncImagePainter
+
 data class ApiResponse<T>(
-    val result: T? = null,
+    val success: Boolean,
+    val data: T? = null,
     val error: ErrorResponse? = null
 )
 
