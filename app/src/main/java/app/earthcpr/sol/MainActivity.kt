@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import app.earthcpr.sol.screens.challengehistory.ChallengeHistoryScreen
 import app.earthcpr.sol.screens.join.JoinScreen
 import app.earthcpr.sol.screens.login.LoginScreen
 import app.earthcpr.sol.screens.home.HomeScreen
@@ -107,6 +108,11 @@ fun MyApp() {
                 },
             )
         }
+        composable("challengeHistoryScreen") {
+            ChallengeHistoryScreen(
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
+            )
+        }
         composable("myDepositAccountListScreen?accountTypeUniqueNo={accountTypeUniqueNo}")
         { backStackEntry ->
             val accountTypeUniqueNo =
@@ -177,7 +183,7 @@ fun MyApp() {
                 // todo 변경필요
                 navigationToAccountDetailScreen = { accountNo ->
                     navController.navigate("savingAccountDetailScreen?accountNo=$accountNo")
-                }
+                },
             )
         }
         composable(
@@ -189,7 +195,8 @@ fun MyApp() {
 
             SavingAccountDetailScreen(
                 navigationToHomeScreen = { navController.navigate("homeScreen") },
-                accountNo = accountNo
+                accountNo = accountNo,
+                navigationToChallengeHistoryScreen = { navController.navigate("challengeHistoryScreen") },
             )
         }
     }

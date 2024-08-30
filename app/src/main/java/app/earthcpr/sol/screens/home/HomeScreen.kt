@@ -58,17 +58,14 @@ fun HomeScreen(
                     text = "챌린지",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    modifier = Modifier.padding(16.dp)
                 )
-
-
-
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
                     text = "적금",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    modifier = Modifier.padding(16.dp)
                 )
 
                 homeModel.accountList.forEach { account ->
