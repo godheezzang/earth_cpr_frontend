@@ -133,7 +133,7 @@ fun SavingsCardWithToggle(
                         fontSize = 12.sp
                     )
                     Text(
-                        text = "${cardInfo.interestRate.toDouble() + cardInfo.increaseInterestRate.toDouble()}%",
+                        text = String.format("%.2f%%", cardInfo.interestRate.toDouble() + (cardInfo.subscriptionPeriod.toDouble() / 7) * cardInfo.increaseInterestRate.toDouble()),
                         color = Color(0xFFD62020),
                         fontWeight = FontWeight.Normal,
                         fontFamily = newFontFamily,
@@ -193,7 +193,7 @@ fun SavingsCardWithToggle(
                         color = Color.Black
                     )
                     Text(
-                        text = "연 ${cardInfo.interestRate.toDouble() + cardInfo.increaseInterestRate.toDouble()}%",
+                        text = String.format("%.2f%%", cardInfo.interestRate.toDouble() + (cardInfo.subscriptionPeriod.toDouble() / 7) * cardInfo.increaseInterestRate.toDouble()),
                         fontFamily = newFontFamily,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
