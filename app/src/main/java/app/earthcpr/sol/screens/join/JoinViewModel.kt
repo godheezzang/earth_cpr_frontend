@@ -6,7 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.earthcpr.sol.models.api.request.JoinRequestBody
+import app.earthcpr.sol.services.apiService
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import javax.inject.Inject
 
 class JoinViewModel @Inject constructor() : ViewModel() {
@@ -36,16 +38,16 @@ class JoinViewModel @Inject constructor() : ViewModel() {
     }
 
     fun checkUserNameLength(
-        userName: String
+        userNickname: String
     ) {
-        _isUserNameEmpty.value = userName.isEmpty()
+        _isUserNameEmpty.value = userNickname.isEmpty()
         checkJoinButtonEnable()
     }
 
     fun checkEmailLength(
-        email: String
+        loginId: String
     ) {
-        _isEmailEmpty.value = email.isEmpty()
+        _isEmailEmpty.value = loginId.isEmpty()
         checkJoinButtonEnable()
     }
 
@@ -58,35 +60,33 @@ class JoinViewModel @Inject constructor() : ViewModel() {
 
     fun createUser(
         onSuccess: () -> Unit,
-        userEmail: String,
+        loginId: String,
         password: String,
-        userName: String,
+        userNickname: String,
     ) {
-        try {
-            val requestBody = JoinRequestBody(userEmail, password, userName)
-            viewModelScope.launch {
-                // coroutine
-                try {
-                    // todo api 연동
-//                    val response = apiService.postJoin(requestBody);
-//                    if (response.result == "true") {
-//                        // todo 성공시 onSuccess 호출
-//                        // onSuccess()
-//                    } else {
-//                        // todo 제거
-//                        MockService.doNothing()
-//                        // todo
-//                        // 이미 가입한 경우
-//                        // _isEmailAlreadyJoined.value = true
-//                    }
-                    onSuccess()
-                } catch (e: Exception) {
-                    Log.e(TAG, "[ERROR] apiService.postJoin(requestBody) message: ", e)
-                    // 회원가입 실패했습니다 처리
-                }
+        viewModelScope.launch {
+            // coroutine
+            try {
+                val requestBody = JoinRequestBody(loginId, password, userNickname)
+
+                // todo api 연동
+                val response = apiService.postJoin(requestBody);
+
+                Log.d(TAG, "Response: $response")
+
+
+                    if (response.success) {
+                        // todo 성공시 onSuccess 호출
+                        onSuccess()
+                    } else {
+                        // todo
+                        // 이미 가입한 경우
+                        _isEmailAlreadyJoined.value = true
+                    }
+            } catch (e: Exception) {
+                Log.e(TAG, "[ERROR] apiService.postJoin(requestBody) message: ", e)
+                // 회원가입 실패했습니다 처리
             }
-        } catch (e: Exception) {
-            Log.e(TAG, "[ERROR] createUser message: ", e)
         }
     }
 }

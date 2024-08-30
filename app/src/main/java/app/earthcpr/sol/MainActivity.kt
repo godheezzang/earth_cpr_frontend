@@ -30,17 +30,17 @@ class MainActivity : ComponentActivity() {
 
     companion object {
         lateinit var preferences: PreferenceUtil
-        lateinit var userId: String
+        lateinit var loginId: String
 
-        // userUuid 없을 때 초기화 하는 코드
+         // userUuid 없을 때 초기화 하는 코드
         fun initUserUuidIfNull() {
-            userId = preferences.getString("userId", "")
+            loginId = preferences.getString("loginId", "")
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         preferences = PreferenceUtil(applicationContext)
-        userId = preferences.getString("userId", "")
+        loginId = preferences.getString("loginId", "")
         super.onCreate(savedInstanceState)
 
 //        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->

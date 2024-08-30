@@ -48,9 +48,9 @@ fun JoinScreen(
     val isPasswordTooShort by joinViewModel.isPasswordTooShort
     val isUserNameEmpty by joinViewModel.isUserNameEmpty
     val joinButtonEnable by joinViewModel.joinButtonEnable
-    var email by remember { mutableStateOf("") }
+    var loginId by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var userName by remember { mutableStateOf("") }
+    var userNickname by remember { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
 
     val joinButtonColor = if (!joinButtonEnable) Color(0xFF80A2FF) else Color(0xFF0046FF)
@@ -92,10 +92,10 @@ fun JoinScreen(
         }
 
         TextField(
-            value = email,
+            value = loginId,
             onValueChange = {
-                email = it
-                joinViewModel.checkEmailLength(email)
+                loginId = it
+                joinViewModel.checkEmailLength(loginId)
             },
             placeholder = {
                 Text(
@@ -201,10 +201,10 @@ fun JoinScreen(
             )
         }
         TextField(
-            value = userName,
+            value = userNickname,
             onValueChange = {
-                userName = it
-                joinViewModel.checkUserNameLength(userName)
+                userNickname = it
+                joinViewModel.checkUserNameLength(userNickname)
             },
             placeholder = {
                 Text(
@@ -225,8 +225,6 @@ fun JoinScreen(
                 textColor = Color.Black,
                 cursorColor = Color.Black
             ),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
         )
         if (isUserNameEmpty) {
             Row(
@@ -262,9 +260,9 @@ fun JoinScreen(
                         if (joinButtonEnable) {
                             joinViewModel.createUser(
                                 navigationToLoginScreen,
-                                email,
+                                loginId,
                                 password,
-                                userName
+                                userNickname
                             )
                         }
                     },
@@ -285,7 +283,7 @@ fun JoinScreen(
     }
 }
 
-fun createAccount(email: String, password: String, navigate: () -> Unit) {
+fun createAccount(loginId: String, password: String, navigate: () -> Unit) {
 
 }
 

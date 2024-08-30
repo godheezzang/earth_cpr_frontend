@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.earthcpr.sol.R
 import app.earthcpr.sol.ui.theme.newFontFamily
+import kotlin.math.log
 
 @Composable
 fun LoginScreen(
@@ -55,15 +56,18 @@ fun LoginScreen(
     // 이미 로그인 했다면
     if (loginViewModel.checkAlreadyLogin()) {
 //        navigationToHomeScreen()
-        navigationToHomeScreen("tempId")
+        navigationToHomeScreen("loginId")
     }
 
-    fun postLogin(): Unit {
-        loginViewModel.login {
-            // 홈 화면으로 이동
-//            navigationToHomeScreen()
-            navigationToHomeScreen("tempId")
-        }
+    fun postLogin(loginId: String, password: String): Unit {
+        loginViewModel.login(
+            loginId = loginId,
+            password = password,
+            onSuccess = {
+                // 홈 화면으로 이동
+                navigationToHomeScreen("loginId")
+            }
+        )
     }
 
     when (isFailState) {
@@ -189,7 +193,7 @@ fun LoginScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable {
-                                postLogin()
+                                postLogin(email, password)
                             },
                         contentAlignment = Alignment.Center,
                     ) {
