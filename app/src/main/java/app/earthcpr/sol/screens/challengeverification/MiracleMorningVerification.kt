@@ -1,4 +1,5 @@
-package app.earthcpr.sol.screens.challengeverification
+package com.example.ht_practice.complete
+
 
 import android.graphics.Bitmap
 import android.net.Uri
@@ -50,7 +51,12 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import app.earthcpr.sol.R
+import app.earthcpr.sol.screens.challengeverification.ApiService
+import app.earthcpr.sol.screens.challengeverification.apiService
+import app.earthcpr.sol.screens.challengeverification.rememberImagePainter
 import app.earthcpr.sol.screens.topbar.TopBar
+//import com.example.ht_practice.R
+//import com.example.ht_practice.TopBar.TopBar
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -126,10 +132,10 @@ fun MiracleMorningVerification(navController: NavController) {
 
         Button(
             onClick = {
-                if(getCurrentDateTime() == "04" || getCurrentDateTime() == "05"){
+                if(getCurrentDateTime() == "04" || getCurrentDateTime() == "05"){  // 미라클모닝 설정시간
                     showDialog = true
                 }
-                 },
+            },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF0044FF)
             ),
@@ -145,7 +151,7 @@ fun MiracleMorningVerification(navController: NavController) {
         Button(
             onClick = {
                 selectedImageUri?.let { uri ->
-                    uploadImage(apiService, context, uri, "1", "1" ,  ){ success, error ->
+                    uploadMiracleMorning(apiService, context,  "1", "5" , "0"  ){ success, error ->
                         if (success) {
                             errorMessage = "이미지 업로드 성공"
                         } else {
@@ -153,7 +159,7 @@ fun MiracleMorningVerification(navController: NavController) {
                         }
                     }
                 } ?: capturedImageBitmap?.let { bitmap ->
-                    uploadImage(apiService, context, bitmap, "1", "1"){ success, error ->
+                    uploadMiracleMorning(apiService, context,  "1", "5" ,"0"){ success, error ->
                         if (success) {
                             errorMessage = "이미지 업로드 성공"
                         } else {
@@ -224,10 +230,10 @@ fun MiracleMorningVerification(navController: NavController) {
             if(message == "이미지 업로드 성공"){
                 // errorMessage = null 처리 및 화면 전환
                 errorMessage = null
-                    LaunchedEffect(Unit) {
+                LaunchedEffect(Unit) {
 //                            navController.navigate("ImageUploadSuccessScreen")
-                        navController.navigate("MiracleMorningVerificationSuccessScreen")
-                    }
+                    navController.navigate("MiracleMorningVerificationSuccessScreen")
+                }
 
             }else {
                 AlertDialog(
@@ -249,19 +255,20 @@ fun MiracleMorningVerification(navController: NavController) {
 }
 
 // 제발 uri 업로드의 신이시여 오류나지 않게 도와주소서
-private fun uploadImage(apiService: ApiService, context: android.content.Context, uri: Uri, userId: String, challengeId: String, onComplete: (Boolean, String?) -> Unit) {
+public fun uploadMiracleMorning(apiService: ApiService, context: android.content.Context,  userId: String, challengeId: String, data : String , onComplete: (Boolean, String?) -> Unit) {
     val userIdBody = RequestBody.create(MultipartBody.FORM, userId)
     val challengeIdBody = RequestBody.create(MultipartBody.FORM, challengeId)
+    val body = RequestBody.create(MultipartBody.FORM, data)
 
-    val inputStream = context.contentResolver.openInputStream(uri)
-    val file = File(context.cacheDir, "upload_image.jpg")
-    val outputStream = FileOutputStream(file)
-    inputStream?.copyTo(outputStream)
-    outputStream.close()
+//    val inputStream = context.contentResolver.openInputStream(uri)
+//    val file = File(context.cacheDir, "upload_image.jpg")
+//    val outputStream = FileOutputStream(file)
+//    inputStream?.copyTo(outputStream)
+//    outputStream.close()
 
-    val requestFile = RequestBody.create(MultipartBody.FORM, file)
-    val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-    val call = apiService.uploadReceipt(userIdBody, challengeIdBody, body)
+//    val requestFile = RequestBody.create(MultipartBody.FORM, file)
+//    val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+    val call = apiService.uploadMiracleMorning(userIdBody, challengeIdBody, body)
     call.enqueue(object : retrofit2.Callback<ResponseBody> {
         override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
             if (response.isSuccessful) {
@@ -281,36 +288,37 @@ private fun uploadImage(apiService: ApiService, context: android.content.Context
     })
 }
 // 제발 bitmap 업로드의 신이시여 오류나지 않게 도와주소서
-private fun uploadImage(apiService: ApiService, context: android.content.Context, bitmap: Bitmap, userId: String, challengeId: String, onComplete: (Boolean, String?) -> Unit ) {
-    val userIdBody = RequestBody.create(MultipartBody.FORM, userId)
-    val challengeIdBody = RequestBody.create(MultipartBody.FORM, challengeId)
-
-    val file = File(context.cacheDir, "upload_image.jpg")
-    val outputStream = FileOutputStream(file)
-    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-    outputStream.close()
-
-    val requestFile = RequestBody.create(MultipartBody.FORM, file)
-    val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-    val call = apiService.uploadReceipt(userIdBody, challengeIdBody, body)
-    call.enqueue(object : retrofit2.Callback<ResponseBody> {
-        override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
-            if (response.isSuccessful) {
-                onComplete(true, null)
-                Log.d("TAG", "이미지 전송 성공 : ${response.code()}  ${response.body()}")
-
-            } else {
-                onComplete(false, "이미지 전송이 실패하였습니다. 다시 시도해 주세요.")
-                Log.d("TAG", "이미지 전송 시도 성공 , 통신 실패  , ${response.code()}  ${response.body()}")
-            }
-        }
-
-        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-            onComplete(false, "이미지 전송이 실패하였습니다. 다시 시도해 주세요.")
-            Log.d("TAG", "이미지 업로드 실패 onFailure :   ${t.message}"  )
-        }
-    })
-}
+//public fun uploadMiracleMorning(apiService: ApiService, context: android.content.Context,  userId: String, challengeId: String, data : String , onComplete: (Boolean, String?) -> Unit ) {
+//    val userIdBody = RequestBody.create(MultipartBody.FORM, userId)
+//    val challengeIdBody = RequestBody.create(MultipartBody.FORM, challengeId)
+//    val body = RequestBody.create(MultipartBody.FORM, data)
+//
+////    val file = File(context.cacheDir, "upload_image.jpg")
+////    val outputStream = FileOutputStream(file)
+////    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+////    outputStream.close()
+//
+////    val requestFile = RequestBody.create(MultipartBody.FORM, file)
+////    val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+//    val call = apiService.uploadMiracleMorning(userIdBody, challengeIdBody, body)
+//    call.enqueue(object : retrofit2.Callback<ResponseBody> {
+//        override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
+//            if (response.isSuccessful) {
+//                onComplete(true, null)
+//                Log.d("TAG", "이미지 전송 성공 : ${response.code()}  ${response.body()}")
+//
+//            } else {
+//                onComplete(false, "이미지 전송이 실패하였습니다. 다시 시도해 주세요.")
+//                Log.d("TAG", "이미지 전송 시도 성공 , 통신 실패  , ${response.code()}  ${response.body()}")
+//            }
+//        }
+//
+//        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//            onComplete(false, "이미지 전송이 실패하였습니다. 다시 시도해 주세요.")
+//            Log.d("TAG", "이미지 업로드 실패 onFailure :   ${t.message}"  )
+//        }
+//    })
+//}
 
 @Composable
 fun MiracleMorningVerificationScreen(

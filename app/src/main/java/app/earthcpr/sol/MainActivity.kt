@@ -14,6 +14,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import app.earthcpr.sol.screens.challengehistory.ChallengeHistoryScreen
+import app.earthcpr.sol.screens.challengeverification.EatUpVerificationScreen
+import app.earthcpr.sol.screens.challengeverification.EatUpVerificationSuccessScreen
+import app.earthcpr.sol.screens.challengeverification.MiracleMorningVerificationSuccessScreen
+import app.earthcpr.sol.screens.challengeverification.TumblerVerificationScreen
+import app.earthcpr.sol.screens.challengeverification.TumblerVerificationSuccessScreen
+import app.earthcpr.sol.screens.challengeverification.WorkOutVerificationScreen
+import app.earthcpr.sol.screens.challengeverification.WorkOutVerificationSuccessScreen
 import app.earthcpr.sol.screens.join.JoinScreen
 import app.earthcpr.sol.screens.login.LoginScreen
 import app.earthcpr.sol.screens.home.HomeScreen
@@ -26,6 +33,7 @@ import app.earthcpr.sol.screens.savings.mydepositaccountlist.MyDepositAccountLis
 import app.earthcpr.sol.screens.savings.success.SavingCreateAccountSuccessScreen
 import app.earthcpr.sol.ui.theme.SolApplicationTheme
 import app.earthcpr.sol.utils.PreferenceUtil
+import com.example.ht_practice.complete.MiracleMorningVerificationScreen
 
 class MainActivity : ComponentActivity() {
     private val TAG = "MainActivity"
@@ -209,5 +217,23 @@ fun MyApp() {
                 navigationToChallengeHistoryScreen = { navController.navigate("challengeHistoryScreen") },
             )
         }
+        
+        // 여기서부터 윤호코드
+
+        composable("EatUpVerificationScreen" ){ EatUpVerificationScreen(navController) } // 빈그릇
+        composable("EatUpVerificationSuccessScreen" ){ EatUpVerificationSuccessScreen(navController) } // 빈그릇
+
+        composable("TumblerVerification" ){ TumblerVerificationScreen(navController) } // 텀블러
+        composable("TumblerVerificationSuccessScreen" ){ TumblerVerificationSuccessScreen(navController) } // 텀블러
+
+        composable("MiracleMorningVerificationScreen" ){ MiracleMorningVerificationScreen(navController) } // 텀블러
+        composable("MiracleMorningVerificationSuccessScreen" ){ MiracleMorningVerificationSuccessScreen(navController) } // 텀블러
+
+        composable("WorkOutVerificationScreen" ){ WorkOutVerificationScreen(navController) } // 텀블러
+        composable("WorkOutVerificationSuccessScreen" ){ WorkOutVerificationSuccessScreen(navController) } // 텀블러
+    
+        //composable("FriendRankingScreen" ){ FriendRankingScreen(MyViewModel() , navController) } // 친구 순위   >> 보류.... 무시하세요
+
+
     }
 }

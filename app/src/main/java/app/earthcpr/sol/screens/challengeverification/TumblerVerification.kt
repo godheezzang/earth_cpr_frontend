@@ -196,7 +196,7 @@ fun TumblerVerification(navController: NavController) {
         Button(
             onClick = {
                 selectedImageUri?.let { uri ->
-                    uploadImage(apiService, context, uri, "1", "1" ,  ){ success, error ->
+                    uploadImage(apiService, context, uri, "1", "2" ,  ){ success, error ->
                         if (success) {
                             errorMessage = "이미지 업로드 성공"
                         } else {
@@ -204,7 +204,7 @@ fun TumblerVerification(navController: NavController) {
                         }
                     }
                 } ?: capturedImageBitmap?.let { bitmap ->
-                    uploadImage(apiService, context, bitmap, "1", "1"){ success, error ->
+                    uploadImage(apiService, context, bitmap, "1", "2"){ success, error ->
                         if (success) {
                             errorMessage = "이미지 업로드 성공"
                         } else {
