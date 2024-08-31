@@ -34,7 +34,8 @@ import app.earthcpr.sol.ui.theme.newFontFamily
 @Composable
 fun SavingAccountDetailScreen(
     navigationToHomeScreen: () -> Unit,
-    accountNo: String
+    accountNo: String,
+    navigationToChallengeHistoryScreen: () -> Unit,
 ) {
     val context = LocalContext.current
     val savingAccountDetailViewModel: SavingAccountDetailViewModel = viewModel()
@@ -246,7 +247,7 @@ fun SavingAccountDetailScreen(
                 Text(
                     text = "챌린지 달성율이 궁금하다면?",
                     fontSize = 16.sp,
-                    color = Color(0xFF0046FF),
+                    color = Color.Black,
                     fontFamily = newFontFamily,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -270,14 +271,7 @@ fun SavingAccountDetailScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable {
-                                Toast
-                                    .makeText(
-                                        context,
-                                        "확인하러 가기 버튼 클릭",
-                                        Toast.LENGTH_SHORT
-                                    )
-                                    .show()
-
+                                navigationToChallengeHistoryScreen()
                             },
                         contentAlignment = Alignment.Center,
                     ) {
