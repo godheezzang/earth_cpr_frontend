@@ -5,7 +5,11 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.earthcpr.sol.MainActivity
 import app.earthcpr.sol.models.MyAccount
+import app.earthcpr.sol.models.api.request.CreateAccountRequestBody
+import app.earthcpr.sol.models.api.request.MyAccountListRequestBody
+import app.earthcpr.sol.services.apiService
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,7 +21,7 @@ class MySavingAccountListViewModel @Inject constructor() : ViewModel() {
     private val TAG: String = "SavingAccountListViewModel"
 
     init {
-        getMySavingAccountList()
+        getMySavingAccountList("loginId")
     }
 
     fun onClickItem(accountNo: String) {
@@ -28,15 +32,18 @@ class MySavingAccountListViewModel @Inject constructor() : ViewModel() {
     }
 
     // 나의 적금 계좌 목록 조회 =
-    fun getMySavingAccountList() {
+    fun getMySavingAccountList(
+        loginId: String,
+    ) {
         viewModelScope.launch {
             // coroutine
             try {
                 // todo
-//                val requestBody = CreateAccountRequestBody(email)
-//                val userUuid = apiService.postSavingAccount(requestBody).result
-//                MainActivity.preferences.setString("userUuid", userUuid ?: "")
-//                MainActivity.initUserUuidIfNull()
+                val requestBody = MyAccountListRequestBody(loginId)
+                val response = apiService.getMyAccountList(requestBody)
+                Log.d(TAG, "response $response")
+                MainActivity.preferences.getString("loginId", "")
+                MainActivity.initUserUuidIfNull()
                 _myAccountListModel.value = MyAccountListModel(
                     accountList = listOf(
                         MyAccount(
