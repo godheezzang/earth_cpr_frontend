@@ -20,10 +20,7 @@ cd Frontend
 
 ## 실행 화면
 #### 로그인 화면
-<img src="login.png">
+<img src="./readmeImage/login.png" width=300px>
 
-#### 로그인 화면
-<img src="login.png">
-
-#### 로그인 화면
-<img src="login.png">
+#### 적금 화면
+<img src="./readmeImage/saveproduct.png" width=300px>
