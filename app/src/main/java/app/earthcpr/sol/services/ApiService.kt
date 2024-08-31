@@ -7,12 +7,18 @@ import app.earthcpr.sol.models.api.request.LoginRequestBody
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -55,7 +61,6 @@ private val retrofit = Retrofit.Builder()
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .build()
 
-
 // 서비스 메소드에 대한 액세스 권한을 위임한다.
 // recipeService 가 ApiService 의 getCategories를 호출할 수 있게 해준다.
 // ApiService 내에 여러 fun 들을 추가하면 된다.
@@ -80,4 +85,6 @@ interface ApiService {
     // [API] 적금 계좌 등록
     @POST("/api/v1/save/create/savingaccount")
     suspend fun postSavingAccount(@Body request: CreateAccountRequestBody): ApiResponse<String>
+
+
 }
