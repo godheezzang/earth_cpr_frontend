@@ -5,6 +5,8 @@ import app.earthcpr.sol.models.api.response.ApiResponse
 import app.earthcpr.sol.models.api.request.JoinRequestBody
 import app.earthcpr.sol.models.api.request.LoginRequestBody
 import app.earthcpr.sol.models.api.request.MyAccountListRequestBody
+import app.earthcpr.sol.screens.savings.myaccountlist.AccountListResponse
+import app.earthcpr.sol.screens.savings.mydepositaccountlist.DepositAccountListResponse
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -57,7 +59,7 @@ val gson = GsonBuilder()
 
 // 엔드포인트를 준비시키고, json converter를 추가해주는 역할을 한다.
 private val retrofit = Retrofit.Builder()
-    .baseUrl("http://ec2-3-34-227-48.ap-northeast-2.compute.amazonaws.com:8080/api/v1") // todo 서버 배포되면 개발서버 주소로 변경
+    .baseUrl("http://ec2-3-34-227-48.ap-northeast-2.compute.amazonaws.com:8080/api/v1/") // todo 서버 배포되면 개발서버 주소로 변경
     .client(httpClient)
     .addConverterFactory(GsonConverterFactory.create(gson))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
@@ -78,18 +80,22 @@ interface ApiService {
 //    suspend fun postDailyReward(@Body request: UserIdRequest): ApiResponse<String>
 
     // [API] 로그인
-    @POST("/user/login")
+    @POST("user/login")
     suspend fun postLogin(@Body request: LoginRequestBody): ApiResponse<String?>
 
     // [API] 회원가입
-    @POST("/user/create")
+    @POST("user/create")
     suspend fun postJoin(@Body request: JoinRequestBody): ApiResponse<String>
 
     // [API] 적금 계좌 등록
-    @POST("/save/create/savingaccount")
+    @POST("save/create/savingaccount")
     suspend fun postSavingAccount(@Body request: CreateAccountRequestBody): ApiResponse<String>
 
     // [API] 적금 계좌 목록 조회
-    @GET("/save/get/savingaccount")
-    suspend fun getMyAccountList(@Body request: MyAccountListRequestBody): ApiResponse<String>
+    @POST("save/get/savingaccount")
+    suspend fun getMyAccountList(@Body request: MyAccountListRequestBody): AccountListResponse
+
+    // [API] 사용자 입출금 통장 목록 조회
+    @POST("deposit/get/depositaccounts")
+    suspend fun getDepositAccountList(@Body request: MyAccountListRequestBody): DepositAccountListResponse
 }

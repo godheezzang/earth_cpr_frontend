@@ -40,6 +40,15 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    fun logout() {
+        preferences.clear()
+        setContent {
+            SolApplicationTheme {
+                MyApp()
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         preferences = PreferenceUtil(applicationContext)
         loginId = preferences.getString("loginId", "")

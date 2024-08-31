@@ -4,5 +4,9 @@ data class DepositAccount(
     val bankCode: String,
     val accountNo: String,
     val accountName: String,
-    val accountBalance: Long,
-)
+    val accountBalance: String, // String으로 변경
+) {
+    fun getAccountBalanceAsLong(): Long {
+        return accountBalance.toLongOrNull() ?: 0L
+    }
+}
