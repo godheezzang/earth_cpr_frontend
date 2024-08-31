@@ -5,7 +5,7 @@ import app.earthcpr.sol.models.api.response.ApiResponse
 import app.earthcpr.sol.models.api.request.JoinRequestBody
 import app.earthcpr.sol.models.api.request.LoginRequestBody
 import app.earthcpr.sol.models.api.request.MyAccountListRequestBody
-import app.earthcpr.sol.screens.savings.myaccountlist.AccountListResponse
+//import app.earthcpr.sol.screens.savings.myaccountlist.AccountListResponse
 import app.earthcpr.sol.screens.savings.mydepositaccountlist.DepositAccountListResponse
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
@@ -92,8 +92,8 @@ interface ApiService {
     suspend fun postSavingAccount(@Body request: CreateAccountRequestBody): ApiResponse<String>
 
     // [API] 적금 계좌 목록 조회
-    @POST("save/get/savingaccount")
-    suspend fun getMyAccountList(@Body request: MyAccountListRequestBody): AccountListResponse
+//    @POST("save/get/savingaccount")
+//    suspend fun getMyAccountList(@Body request: MyAccountListRequestBody): AccountListResponse
 
     // [API] 사용자 입출금 통장 목록 조회
     @POST("deposit/get/depositaccounts")

@@ -44,6 +44,10 @@ fun HomeScreen(
     navigationToAccountDetailScreen: (String) -> Unit,
     navigationToProductListScreen: () -> Unit,
     navigationToChallengeHistoryScreen: () -> Unit,
+    navigationToMiracleMorningVerificactionScreen: () -> Unit,
+    navigationToTumblerVerificationScreen: () -> Unit,
+    navigationToWorkOutVerificationScreen: () -> Unit
+
 ) {
     val context = LocalContext.current
     val activity = LocalContext.current as MainActivity
@@ -66,166 +70,178 @@ fun HomeScreen(
 
         val hasSavings = homeModel.accountList.isNotEmpty()
 //        val hasSavings = false
-        if (hasSavings) {
-            // 적금 목록
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(scrollState)
-            ) {
-                Text(
-                    text = "챌린지",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(16.dp)
-                )
-
-                Card(
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            if (hasSavings) {
+                // 적금 목록
+                Column(
                     modifier = Modifier
-                        .height(210.dp)
-                        .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
-                        .fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color.White,
-                    ),
-                    border = BorderStroke(1.dp, color = colorResource(id = R.color.box_border_color)),
-                    shape = RoundedCornerShape(10.dp),
+                        .fillMaxSize()
+                        .verticalScroll(scrollState)
                 ) {
-                    Column(
+                    Text(
+                        text = "챌린지",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(16.dp)
+                    )
+
+                    Card(
                         modifier = Modifier
-                            .fillMaxHeight()
-                            .padding(16.dp)
-
+                            .height(210.dp)
+                            .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
+                            .fillMaxWidth(),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.White,
+                        ),
+                        border = BorderStroke(1.dp, color = colorResource(id = R.color.box_border_color)),
+                        shape = RoundedCornerShape(10.dp),
                     ) {
-                        Text(
-                            text = "챌린지 목록 >",
-                            fontFamily = newFontFamily,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.Black,
-                        )
-                        Row (
+                        Column(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            // TODO 챌린지 검증 바로가기 로직 추가
-                            Column(
-                                modifier = Modifier
-                                    .weight(1f),
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Image(
-                                    modifier = Modifier
-                                        .width(24.dp)
-                                        .height(24.dp),
-                                    painter = painterResource(id = R.drawable.alarm),
-                                    contentDescription = ""
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = "미라클 모닝",
-                                    fontFamily = newFontFamily,
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = Color.Black,
-                                )
-                            }
-                            Column(
-                                modifier = Modifier
-                                    .weight(1f),
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Image(
-                                    modifier = Modifier
-                                        .width(24.dp)
-                                        .height(24.dp),
-                                    painter = painterResource(id = R.drawable.glass_cup),
-                                    contentDescription = ""
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = "텀블러 사용",
-                                    fontFamily = newFontFamily,
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = Color.Black,
-                                )
-                            }
-                            Column(
-                                modifier = Modifier
-                                    .weight(1f),
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Image(
-                                    modifier = Modifier
-                                        .width(24.dp)
-                                        .height(24.dp),
-                                    painter = painterResource(id = R.drawable.fitness_center),
-                                    contentDescription = ""
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = "운동",
-                                    fontFamily = newFontFamily,
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = Color.Black,
-                                )
+                                .fillMaxHeight()
+                                .padding(16.dp)
 
+                        ) {
+                            Text(
+                                text = "챌린지 바로가기",
+                                fontFamily = newFontFamily,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = Color.Black,
+                            )
+                            Row (
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                // TODO 챌린지 검증 바로가기 로직 추가
+                                Column(
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .clickable {
+                                            navigationToMiracleMorningVerificactionScreen()
+                                        },
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Image(
+                                        modifier = Modifier
+                                            .width(24.dp)
+                                            .height(24.dp),
+                                        painter = painterResource(id = R.drawable.alarm),
+                                        contentDescription = ""
+                                    )
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = "미라클 모닝",
+                                        fontFamily = newFontFamily,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.Black,
+                                    )
+                                }
+                                Column(
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .clickable {
+                                            navigationToTumblerVerificationScreen()
+                                        },
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Image(
+                                        modifier = Modifier
+                                            .width(24.dp)
+                                            .height(24.dp),
+                                        painter = painterResource(id = R.drawable.glass_cup),
+                                        contentDescription = ""
+                                    )
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = "텀블러 사용",
+                                        fontFamily = newFontFamily,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.Black,
+                                    )
+                                }
+                                Column(
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .clickable {
+                                            navigationToWorkOutVerificationScreen()
+                                        },
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Image(
+                                        modifier = Modifier
+                                            .width(24.dp)
+                                            .height(24.dp),
+                                        painter = painterResource(id = R.drawable.fitness_center),
+                                        contentDescription = ""
+                                    )
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = "운동",
+                                        fontFamily = newFontFamily,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.Black,
+                                    )
+
+                                }
                             }
+                            Spacer(modifier = Modifier.height(20.dp))
+                            Text(
+                                text = "챌린지 달성 내역 >",
+                                fontFamily = newFontFamily,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = Color.Black,
+                                modifier = Modifier.clickable {
+                                    navigationToChallengeHistoryScreen()
+                                }
+                            )
                         }
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Text(
-                            text = "챌린지 달성 내역 >",
-                            fontFamily = newFontFamily,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.Black,
-                            modifier = Modifier.clickable {
-                                navigationToChallengeHistoryScreen()
-                            }
-                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "적금",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(16.dp)
+                    )
+
+                    homeModel.accountList.forEach { account ->
+                        MySavingAccount(account)
                     }
                 }
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "적금",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
+            } else {
+                Column(
                     modifier = Modifier.padding(16.dp)
-                )
-
-                homeModel.accountList.forEach { account ->
-                    MySavingAccount(account)
+                ) {
+                    SavingsEmptyLayout(
+                        navigationToProductListScreen
+                    )
                 }
             }
-        } else {
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                SavingsEmptyLayout(
-                    navigationToProductListScreen
-                )
-            }
         }
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight()
                 .padding(bottom = 16.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.Bottom
-        ){
+        ) {
             Text(
                 text = "로그아웃",
-                fontSize = 12.sp,
+                fontSize = 16.sp,
                 fontFamily = newFontFamily,
-                color = Color.LightGray,
+                color = Color.DarkGray,
                 modifier = Modifier.clickable {
                     homeViewModel.logout(activity)
                 }

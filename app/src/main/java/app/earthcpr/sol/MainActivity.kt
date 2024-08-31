@@ -115,7 +115,11 @@ fun MyApp() {
                     navController.navigate("savingAccountDetailScreen?accountNo=$accountNo")
                 },
                 navigationToProductListScreen = { navController.navigate("productListScreen") },
-                navigationToChallengeHistoryScreen = { navController.navigate("challengeHistoryScreen")}
+                navigationToChallengeHistoryScreen = { navController.navigate("challengeHistoryScreen")},
+                navigationToMiracleMorningVerificactionScreen = {navController.navigate("MiracleMorningVerificationScreen")},
+                navigationToTumblerVerificationScreen = {navController.navigate("TumblerVerification")},
+                navigationToWorkOutVerificationScreen = {navController.navigate("WorkOutVerificationScreen")},
+
             )
         }
         composable("productListScreen") {
@@ -199,8 +203,7 @@ fun MyApp() {
             MySavingAccountListScreen(
                 navigationToHomeScreen = { navController.navigate("homeScreen") },
                 // todo 변경필요
-                navigationToAccountDetailScreen = { accountNo ->
-                    navController.navigate("savingAccountDetailScreen?accountNo=$accountNo")
+                navigationToAccountDetailScreen = { navController.navigate("savingAccountDetailScreen")
                 },
             )
         }

@@ -247,7 +247,7 @@ fun SavingAccountDetailScreen(
                 Text(
                     text = "챌린지 달성율이 궁금하다면?",
                     fontSize = 16.sp,
-                    color = Color.Black,
+                    color = Color(0xFF0046FF),
                     fontFamily = newFontFamily,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -288,4 +288,3 @@ fun SavingAccountDetailScreen(
         }
     }
 }
-

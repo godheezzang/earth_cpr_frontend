@@ -1,6 +1,5 @@
 package app.earthcpr.sol.screens.savings.myaccountlist
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -102,10 +101,9 @@ fun MySavingAccount(account: MyAccount) {
             horizontalAlignment = Alignment.Start
         ) {
             Spacer(modifier = Modifier.height(25.dp))
-            Log.d("MyAccount", "Account Name: ${account.accountName}")
 
             Text(
-                text = account.accountName ?: "없음",
+                text = account.accountName,
                 fontSize = 16.sp,
                 color = Color(0xFF00201C),
                 fontFamily = newFontFamily,
@@ -167,7 +165,7 @@ fun MySavingAccount(account: MyAccount) {
                     fontWeight = FontWeight.Normal
                 )
                 Text(
-                    text = account.interestNumber ?: "없음",
+                    text = account.interestNumber,
                     fontSize = 14.sp,
                     color = colorResource(id = R.color.account_list_regular_text_color),
                     fontFamily = newFontFamily,
@@ -188,7 +186,7 @@ fun MySavingAccount(account: MyAccount) {
                     fontWeight = FontWeight.Normal
                 )
                 Text(
-                    text = account.interestRate + "%",
+                    text = account.interestRate.toString() + "%",
                     fontSize = 14.sp,
                     color = colorResource(id = R.color.account_list_regular_text_color),
                     fontFamily = newFontFamily,
@@ -211,16 +209,14 @@ fun MySavingAccount(account: MyAccount) {
                     fontFamily = newFontFamily,
                     fontWeight = FontWeight.Normal
                 )
-                Spacer(modifier = Modifier.width(30.dp))
+                Spacer(modifier = Modifier.width(50.dp))
                 // 원하는 로케일을 지정
                 val locale = Locale("ko") // 또는 Locale("en", "US") 등
                 val symbols = DecimalFormatSymbols(locale)
                 val decimalFormat = DecimalFormat("#,###", symbols)
 
-                val balanceAsLong = account.getTotalBalanceAsLong()
-
                 Text(
-                    text = decimalFormat.format(balanceAsLong) + "원",
+                    text = decimalFormat.format(account.totalBalance) + "원",
                     fontSize = 18.sp,
                     color = Color.Black,
                     fontFamily = newFontFamily,
