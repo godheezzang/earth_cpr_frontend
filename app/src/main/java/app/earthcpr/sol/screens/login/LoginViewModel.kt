@@ -52,7 +52,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
 
                 MainActivity.preferences.setString("loginId", loginId)
-//                MainActivity.initUserUuidIfNull()
+                MainActivity.initUserUuidIfNull()
                 onSuccess()
             } catch (e: Exception) {
                 Log.e(TAG, "[/login] API ERROR OCCURED: ${e.message}")

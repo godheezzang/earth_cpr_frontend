@@ -97,7 +97,8 @@ fun MyApp() {
                 navigationToAccountDetailScreen = { accountNo ->
                     navController.navigate("savingAccountDetailScreen?accountNo=$accountNo")
                 },
-                navigationToProductListScreen = { navController.navigate("productListScreen") }
+                navigationToProductListScreen = { navController.navigate("productListScreen") },
+                navigationToChallengeHistoryScreen = { navController.navigate("challengeHistoryScreen")}
             )
         }
         composable("productListScreen") {
