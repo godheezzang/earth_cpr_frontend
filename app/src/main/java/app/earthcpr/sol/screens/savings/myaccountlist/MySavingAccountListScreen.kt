@@ -1,5 +1,6 @@
 package app.earthcpr.sol.screens.savings.myaccountlist
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -101,9 +102,10 @@ fun MySavingAccount(account: MyAccount) {
             horizontalAlignment = Alignment.Start
         ) {
             Spacer(modifier = Modifier.height(25.dp))
+            Log.d("MyAccount", "Account Name: ${account.accountName}")
 
             Text(
-                text = account.accountName,
+                text = account.accountName ?: "없음",
                 fontSize = 16.sp,
                 color = Color(0xFF00201C),
                 fontFamily = newFontFamily,
@@ -165,7 +167,7 @@ fun MySavingAccount(account: MyAccount) {
                     fontWeight = FontWeight.Normal
                 )
                 Text(
-                    text = account.interestNumber,
+                    text = account.interestNumber ?: "없음",
                     fontSize = 14.sp,
                     color = colorResource(id = R.color.account_list_regular_text_color),
                     fontFamily = newFontFamily,
@@ -186,7 +188,7 @@ fun MySavingAccount(account: MyAccount) {
                     fontWeight = FontWeight.Normal
                 )
                 Text(
-                    text = account.interestRate.toString() + "%",
+                    text = account.interestRate + "%",
                     fontSize = 14.sp,
                     color = colorResource(id = R.color.account_list_regular_text_color),
                     fontFamily = newFontFamily,
@@ -215,8 +217,10 @@ fun MySavingAccount(account: MyAccount) {
                 val symbols = DecimalFormatSymbols(locale)
                 val decimalFormat = DecimalFormat("#,###", symbols)
 
+                val balanceAsLong = account.getTotalBalanceAsLong()
+
                 Text(
-                    text = decimalFormat.format(account.totalBalance) + "원",
+                    text = decimalFormat.format(balanceAsLong) + "원",
                     fontSize = 18.sp,
                     color = Color.Black,
                     fontFamily = newFontFamily,

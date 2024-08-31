@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import app.earthcpr.sol.MainActivity
 import app.earthcpr.sol.R
 import app.earthcpr.sol.screens.savings.myaccountlist.MySavingAccount
 import app.earthcpr.sol.screens.topbar.TopBar
@@ -45,6 +46,7 @@ fun HomeScreen(
     navigationToChallengeHistoryScreen: () -> Unit,
 ) {
     val context = LocalContext.current
+    val activity = LocalContext.current as MainActivity
     val homeViewModel: HomeViewModel = viewModel()
     val homeModel by homeViewModel.homeModel
     val selectedAccountNo by homeViewModel.selectedAccountNo
@@ -63,6 +65,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         val hasSavings = homeModel.accountList.isNotEmpty()
+//        val hasSavings = false
         if (hasSavings) {
             // 적금 목록
             Column(
@@ -209,6 +212,24 @@ fun HomeScreen(
                     navigationToProductListScreen
                 )
             }
+        }
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.Bottom
+        ){
+            Text(
+                text = "로그아웃",
+                fontSize = 12.sp,
+                fontFamily = newFontFamily,
+                color = Color.LightGray,
+                modifier = Modifier.clickable {
+                    homeViewModel.logout(activity)
+                }
+            )
         }
     }
 }

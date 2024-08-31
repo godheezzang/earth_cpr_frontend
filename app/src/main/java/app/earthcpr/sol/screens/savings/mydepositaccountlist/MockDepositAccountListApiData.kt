@@ -1,21 +1,34 @@
 package app.earthcpr.sol.screens.savings.mydepositaccountlist
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import app.earthcpr.sol.models.DepositAccount
+import app.earthcpr.sol.models.MyAccount
 
 object MockDepositAccountListApiData {
+    private val _selectedAccountNo = mutableStateOf("")
+    val selectedAccountNo: State<String> = _selectedAccountNo
 
-    val depositAccountList = listOf(
-        DepositAccount(
-            bankCode = "001",
-            accountNo = "001-61746-48358792",
-            accountName = "신한 입출금 통장 1",
-            accountBalance = 1000000L,
-        ),
-        DepositAccount(
-            bankCode = "001",
-            accountNo = "002-61746-4812312",
-            accountName = "신한 입출금 통장 2",
-            accountBalance = 2000000L,
-        )
-    )
+    fun onClickItem(accountNo: String) {
+        _selectedAccountNo.value = accountNo
+    }
+//    val AccountList = listOf(
+//        MyAccount(
+//            "ESG 실천 챌린지형 적금",
+//            "2024.08.18",
+//            "2025.08.17",
+//            "1234-123-12345",
+//            "1회차",
+//            "2.6",
+//            "500000L"
+//        ) { onClickItem(accountNo = "1234-123-12345") },
+//        MyAccount(
+//            "웰니스 챌린지형 적금",
+//            "2024.08.18",
+//            "2025.08.17",
+//            "1234-123-12345",
+//            "1회차",
+//            "2.6",
+//            "1000000L"
+//        ) { onClickItem(accountNo = "1234-123-12345") },
 }
