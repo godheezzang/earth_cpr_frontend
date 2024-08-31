@@ -1,3 +1,4 @@
+
 package app.earthcpr.sol.screens.challengeverification
 
 import android.graphics.Bitmap
@@ -55,61 +56,12 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
 import java.io.File
 import java.io.FileOutputStream
-import java.io.InputStream
 
-
-
-interface ApiService {
-    @Multipart
-    @POST("/api/v1/challenge/verification")
-    fun uploadReceipt(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Call<ResponseBody>
-
-    @Multipart
-    @POST("/api/v1/challenge/verification")
-    fun uploadWorkOut(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Call<ResponseBody>
-
-    @Multipart
-    @POST("/api/v1/challenge/verification")
-    fun uploadEatUp(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Call<ResponseBody>
-
-    @POST("/api/v1/challenge/verification")
-    fun uploadMiracleMorning(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part("MiracleMorning") miracleMorning : RequestBody,
-    ): Call<ResponseBody>
-
-
-}
-
-val retrofit = Retrofit.Builder()
-    .baseUrl("http://ec2-52-78-171-40.ap-northeast-2.compute.amazonaws.com:8080/")
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
-
-val apiService = retrofit.create(ApiService::class.java)
 
 @Composable
-fun TumblerVerification(navController: NavController) {
+fun WorkOutVerification(navController: NavController) {
     var showDialog by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
@@ -311,20 +263,7 @@ fun TumblerVerification(navController: NavController) {
 //    )
 }
 
-@Composable
-fun rememberImagePainter(context: android.content.Context, uri: Uri): androidx.compose.ui.graphics.painter.Painter {
-    return androidx.compose.ui.res.painterResource(id = android.R.drawable.ic_menu_report_image).let { defaultPainter ->
-        try {
-            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
-            val bitmap = android.graphics.BitmapFactory.decodeStream(inputStream)
-            bitmap?.asImageBitmap()?.let { bitmapPainter ->
-                androidx.compose.ui.graphics.painter.BitmapPainter(bitmapPainter)
-            } ?: defaultPainter
-        } catch (e: Exception) {
-            defaultPainter
-        }
-    }
-}
+
 // 제발 uri 업로드의 신이시여 오류나지 않게 도와주소서
 private fun uploadImage(apiService: ApiService, context: android.content.Context, uri: Uri, userId: String, challengeId: String, onComplete: (Boolean, String?) -> Unit) {
     val userIdBody = RequestBody.create(MultipartBody.FORM, userId)
@@ -390,7 +329,7 @@ private fun uploadImage(apiService: ApiService, context: android.content.Context
 }
 
 @Composable
-fun TumblerVerificationScreen(
+fun WorkOutVerificationScreen(
     navController : NavController
 ) {
     val context = LocalContext.current
@@ -402,7 +341,7 @@ fun TumblerVerificationScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = "텀블러 챌린지"  ) {
+        TopBar(title = " 챌린지"  ) {
 
         }
 
@@ -418,7 +357,7 @@ fun TumblerVerificationScreen(
 
             // "탬플러를 사용하셨나요?" 텍스트
             Text(
-                text = "텀블러를 사용하셨나요?",
+                text = "운동을 하셨나요?",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
@@ -450,7 +389,7 @@ fun TumblerVerificationScreen(
 
 
 
-                TumblerVerification(navController = navController)
+                WorkOutVerification(navController = navController)
 
 
 

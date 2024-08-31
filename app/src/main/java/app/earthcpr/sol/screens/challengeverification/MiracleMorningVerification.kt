@@ -55,42 +55,20 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
 import java.io.File
 import java.io.FileOutputStream
-import java.io.InputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
-
-interface ApiService {
-    @Multipart
-    @POST("/api/v1/challenge/verification")
-    fun uploadReceipt(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Call<ResponseBody>
-}
-
-val retrofit = Retrofit.Builder()
-    .baseUrl("http://ec2-52-78-171-40.ap-northeast-2.compute.amazonaws.com:8080/")
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
-
-val apiService = retrofit.create(ApiService::class.java)
 
 @Composable
-fun ReceiptImageUploadScreen(navController: NavController) {
+fun MiracleMorningVerification(navController: NavController) {
     var showDialog by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
     var capturedImageBitmap by remember { mutableStateOf<Bitmap?>(null) }
-
-//    var navController = rememberNavController()
 
     val context = LocalContext.current
 
@@ -108,14 +86,6 @@ fun ReceiptImageUploadScreen(navController: NavController) {
         showDialog = false
     }
 
-//    Scaffold(
-//        modifier = Modifier.background(color = Color.White),
-
-
-//        topBar = {
-//            TopBar(title = "영수증 검증")
-//        },
-//        content = { paddingValues ->
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -155,7 +125,11 @@ fun ReceiptImageUploadScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { showDialog = true },
+            onClick = {
+                if(getCurrentDateTime() == "04" || getCurrentDateTime() == "05"){
+                    showDialog = true
+                }
+                 },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF0044FF)
             ),
@@ -250,10 +224,11 @@ fun ReceiptImageUploadScreen(navController: NavController) {
             if(message == "이미지 업로드 성공"){
                 // errorMessage = null 처리 및 화면 전환
                 errorMessage = null
-                LaunchedEffect(Unit) {
+                    LaunchedEffect(Unit) {
 //                            navController.navigate("ImageUploadSuccessScreen")
-                    navController.navigate("ImageUploadSuccessScreen")
-                }
+                        navController.navigate("MiracleMorningVerificationSuccessScreen")
+                    }
+
             }else {
                 AlertDialog(
                     onDismissRequest = { errorMessage = null },
@@ -269,37 +244,10 @@ fun ReceiptImageUploadScreen(navController: NavController) {
                 )
             }
 
-        }  // errorMessage가 null일 떄 실행되게 하려고 했으나 상시 null일 때 떠버려서 실패
-//                 ?: run{  AlertDialog(
-//                onDismissRequest = { errorMessage = null },
-//                title = { Text("업로드 성공", color = Color.Black) },
-//                text = { Text("이미지 업로드 성공") },
-//                confirmButton = {
-//                    Button(onClick = { errorMessage = null }) {
-//                        Text("확인")
-//                    }
-//                }
-//                )
-//                }
-    }
-//        }
-//    )
-}
-
-@Composable
-fun rememberImagePainter(context: android.content.Context, uri: Uri): androidx.compose.ui.graphics.painter.Painter {
-    return androidx.compose.ui.res.painterResource(id = android.R.drawable.ic_menu_report_image).let { defaultPainter ->
-        try {
-            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
-            val bitmap = android.graphics.BitmapFactory.decodeStream(inputStream)
-            bitmap?.asImageBitmap()?.let { bitmapPainter ->
-                androidx.compose.ui.graphics.painter.BitmapPainter(bitmapPainter)
-            } ?: defaultPainter
-        } catch (e: Exception) {
-            defaultPainter
         }
     }
 }
+
 // 제발 uri 업로드의 신이시여 오류나지 않게 도와주소서
 private fun uploadImage(apiService: ApiService, context: android.content.Context, uri: Uri, userId: String, challengeId: String, onComplete: (Boolean, String?) -> Unit) {
     val userIdBody = RequestBody.create(MultipartBody.FORM, userId)
@@ -365,7 +313,7 @@ private fun uploadImage(apiService: ApiService, context: android.content.Context
 }
 
 @Composable
-fun ImageUploadScreen(
+fun MiracleMorningVerificationScreen(
     navController : NavController
 ) {
     val context = LocalContext.current
@@ -393,7 +341,7 @@ fun ImageUploadScreen(
 
             // "탬플러를 사용하셨나요?" 텍스트
             Text(
-                text = "텀블러를 사용하셨나요?",
+                text = "아침 햇살보다 이르게 일어나셨나요?",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
@@ -404,7 +352,7 @@ fun ImageUploadScreen(
             )
             // 설명 텍스트
             Text(
-                text = "탬플러 사용 내역을 영수증으로 인증하고,\n챌린지를 달성하세요.",
+                text = "일찍 일어나서 인증하고,\n챌린지를 달성하세요.",
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
@@ -425,7 +373,7 @@ fun ImageUploadScreen(
 
 
 
-                ReceiptImageUploadScreen(navController = navController)
+                MiracleMorningVerification(navController = navController)
 
 
 
@@ -464,7 +412,11 @@ fun ImageUploadScreen(
     }
 }
 
-
+// 현재 날짜와 시간을 가져오는 함수
+fun getCurrentDateTime(): String {
+    val sdf = SimpleDateFormat("HH", Locale.getDefault())
+    return sdf.format(Date())
+}
 
 
 //@Preview

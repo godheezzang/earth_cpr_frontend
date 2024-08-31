@@ -1,6 +1,5 @@
 package app.earthcpr.sol.screens.challengeverification
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -32,10 +31,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.screens.topbar.TopBar
-//import com.example.ht_practice.challengeScreen.ImageUploadSuccessScreen
 
 @Composable
-fun TumblerVerificationSuccessScreen(
+fun WorkOutVerificationSuccessScreen(
     navController : NavController
 ) {
     val context = LocalContext.current
@@ -69,7 +67,7 @@ fun TumblerVerificationSuccessScreen(
             ) {
                 // "탬플러를 사용하셨나요?" 텍스트
                 Text(
-                    text = "텀블러를 사용하셨군요!",
+                    text = "운동을 하셨군요!",
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
@@ -103,7 +101,7 @@ fun TumblerVerificationSuccessScreen(
 
                 // 인증 완료 메시지
                 Text(
-                    text = "텀블러 사용 인증이 완료되었습니다.",
+                    text = "운동 실천 인증이 완료되었습니다.",
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
@@ -151,6 +149,6 @@ fun TumblerVerificationSuccessScreen(
 
 //@Preview
 //@Composable
-//fun Previewhh(){
-//    EatUpImageUploadSuccessScreen(navController =  rememberNavController())
+//fun Previewhhh(){
+//    WorkOutImageUploadSuccessScreen(navController =  rememberNavController())
 //}

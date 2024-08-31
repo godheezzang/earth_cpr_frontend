@@ -1,5 +1,7 @@
 package app.earthcpr.sol.screens.challengeverification
 
+
+import android.accounts.Account
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
@@ -64,52 +66,28 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
+//import com.example.ht_practice.challengeScreen.ImageUploadSuccessScreen
 
 
-interface ApiService {
-    @Multipart
-    @POST("/api/v1/challenge/verification")
-    fun uploadReceipt(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Call<ResponseBody>
-
-    @Multipart
-    @POST("/api/v1/challenge/verification")
-    fun uploadWorkOut(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Call<ResponseBody>
-
-    @Multipart
-    @POST("/api/v1/challenge/verification")
-    fun uploadEatUp(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Call<ResponseBody>
-
-    @POST("/api/v1/challenge/verification")
-    fun uploadMiracleMorning(
-        @Part("savingsAccountId")  savingsAccountId: RequestBody,
-        @Part("challengeId") challengeId: RequestBody,
-        @Part("MiracleMorning") miracleMorning : RequestBody,
-    ): Call<ResponseBody>
-
-
-}
-
-val retrofit = Retrofit.Builder()
-    .baseUrl("http://ec2-52-78-171-40.ap-northeast-2.compute.amazonaws.com:8080/")
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
-
-val apiService = retrofit.create(ApiService::class.java)
+//interface ApiService {
+//    @Multipart
+//    @POST("/api/v1/challenge/verification")
+//    fun uploadReceipt(
+//        @Part("savingsAccountId")  savingsAccountId: RequestBody,
+//        @Part("challengeId") challengeId: RequestBody,
+//        @Part file: MultipartBody.Part
+//    ): Call<ResponseBody>
+//}
+//
+//val retrofit = Retrofit.Builder()
+//    .baseUrl("http://ec2-52-78-171-40.ap-northeast-2.compute.amazonaws.com:8080/")
+//    .addConverterFactory(GsonConverterFactory.create())
+//    .build()
+//
+//val apiService = retrofit.create(ApiService::class.java)
 
 @Composable
-fun TumblerVerification(navController: NavController) {
+fun EatUpVerification(navController: NavController) {
     var showDialog by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
@@ -311,20 +289,20 @@ fun TumblerVerification(navController: NavController) {
 //    )
 }
 
-@Composable
-fun rememberImagePainter(context: android.content.Context, uri: Uri): androidx.compose.ui.graphics.painter.Painter {
-    return androidx.compose.ui.res.painterResource(id = android.R.drawable.ic_menu_report_image).let { defaultPainter ->
-        try {
-            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
-            val bitmap = android.graphics.BitmapFactory.decodeStream(inputStream)
-            bitmap?.asImageBitmap()?.let { bitmapPainter ->
-                androidx.compose.ui.graphics.painter.BitmapPainter(bitmapPainter)
-            } ?: defaultPainter
-        } catch (e: Exception) {
-            defaultPainter
-        }
-    }
-}
+//@Composable
+//fun rememberImagePainter(context: android.content.Context, uri: Uri): androidx.compose.ui.graphics.painter.Painter {
+//    return androidx.compose.ui.res.painterResource(id = android.R.drawable.ic_menu_report_image).let { defaultPainter ->
+//        try {
+//            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
+//            val bitmap = android.graphics.BitmapFactory.decodeStream(inputStream)
+//            bitmap?.asImageBitmap()?.let { bitmapPainter ->
+//                androidx.compose.ui.graphics.painter.BitmapPainter(bitmapPainter)
+//            } ?: defaultPainter
+//        } catch (e: Exception) {
+//            defaultPainter
+//        }
+//    }
+//}
 // 제발 uri 업로드의 신이시여 오류나지 않게 도와주소서
 private fun uploadImage(apiService: ApiService, context: android.content.Context, uri: Uri, userId: String, challengeId: String, onComplete: (Boolean, String?) -> Unit) {
     val userIdBody = RequestBody.create(MultipartBody.FORM, userId)
@@ -390,7 +368,7 @@ private fun uploadImage(apiService: ApiService, context: android.content.Context
 }
 
 @Composable
-fun TumblerVerificationScreen(
+fun EatUpVerificationScreen(
     navController : NavController
 ) {
     val context = LocalContext.current
@@ -450,7 +428,7 @@ fun TumblerVerificationScreen(
 
 
 
-                TumblerVerification(navController = navController)
+                EatUpVerification(navController = navController)
 
 
 
