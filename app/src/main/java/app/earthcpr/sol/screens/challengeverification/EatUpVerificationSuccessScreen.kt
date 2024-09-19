@@ -28,9 +28,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.screens.topbar.TopBar
 
 //import com.example.ht_practice.challengeScreen.ImageUploadSuccessScreen
@@ -48,7 +50,7 @@ fun EatUpVerificationSuccessScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = ""  ) {
+        TopBar(title = "챌린지 성공"  ) {
 
         }
 
@@ -150,14 +152,10 @@ fun EatUpVerificationSuccessScreen(
     }
 }
 
-//@Preview
-//@Composable
-//fun Previewhh(){
-//    TumblerUploadSuccessScreen(navController =  rememberNavController())
-//}
 
-//@Preview
-//@Composable
-//fun Previewhh(){
-//    ImageUploadSuccessScreen(navController =  rememberNavController())
-//}
+
+@Preview
+@Composable
+fun Previewhhh(){
+    EatUpVerificationSuccessScreen(navController =  rememberNavController())
+}

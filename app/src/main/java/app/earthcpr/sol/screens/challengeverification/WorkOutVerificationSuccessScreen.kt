@@ -45,7 +45,7 @@ fun WorkOutVerificationSuccessScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = ""  ) {
+        TopBar(title = "운동 챌린지"  ) {
 
         }
 
@@ -147,8 +147,8 @@ fun WorkOutVerificationSuccessScreen(
     }
 }
 
-//@Preview
-//@Composable
-//fun Previewhhh(){
-//    WorkOutImageUploadSuccessScreen(navController =  rememberNavController())
-//}
+@Preview
+@Composable
+fun Previewhhhasd(){
+    WorkOutVerificationSuccessScreen(navController =  rememberNavController())
+}

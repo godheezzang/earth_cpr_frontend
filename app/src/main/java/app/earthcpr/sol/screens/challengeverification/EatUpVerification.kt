@@ -47,10 +47,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.R
 import app.earthcpr.sol.screens.topbar.TopBar
 import okhttp3.MultipartBody
@@ -119,6 +121,9 @@ fun EatUpVerification(navController: NavController) {
 //            TopBar(title = "영수증 검증")
 //        },
 //        content = { paddingValues ->
+
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -128,6 +133,9 @@ fun EatUpVerification(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
+
+
+
         // 촬영한 사진
         capturedImageBitmap?.let { bitmap ->
             Image(
@@ -150,7 +158,7 @@ fun EatUpVerification(navController: NavController) {
                 contentScale = ContentScale.Crop
             ) // 이미지 고르기 전
         } ?: Image(
-            painter = painterResource(id = R.drawable.receipt_long),  // 엥 베이스라인 .?
+            painter = painterResource(id = R.drawable.bowl),  // 엥 베이스라인 .?
             contentDescription = "",
             modifier = Modifier.size(180.dp)
         )
@@ -165,10 +173,10 @@ fun EatUpVerification(navController: NavController) {
             modifier = Modifier
                 .width(220.dp)
                 .height(50.dp)
-                .padding(bottom = 16.dp),
+                .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text("영수증 이미지 선택", color = Color.White, fontSize = 16.sp)
+            Text("빈그릇 이미지 선택", color = Color.White, fontSize = 16.sp)
         }
 
         Button(
@@ -196,7 +204,7 @@ fun EatUpVerification(navController: NavController) {
             modifier = Modifier
                 .width(220.dp)
                 .height(50.dp)
-                .padding(bottom = 16.dp),
+                .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
             Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp)
@@ -380,7 +388,7 @@ fun EatUpVerificationScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = "텀블러 챌린지"  ) {
+        TopBar(title = "빈그릇 챌린지"  ) {
 
         }
 
@@ -396,7 +404,7 @@ fun EatUpVerificationScreen(
 
             // "탬플러를 사용하셨나요?" 텍스트
             Text(
-                text = "텀블러를 사용하셨나요?",
+                text = "식사를 마치셨나요?",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
@@ -407,7 +415,7 @@ fun EatUpVerificationScreen(
             )
             // 설명 텍스트
             Text(
-                text = "탬플러 사용 내역을 영수증으로 인증하고,\n챌린지를 달성하세요.",
+                text = "깔끔한 그릇을 인증하고,\n챌린지를 달성하세요.",
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
@@ -470,8 +478,8 @@ fun EatUpVerificationScreen(
 
 
 
-//@Preview
-//@Composable
-//fun Previewhh(){
-//    ImageUploadScreen(navController =  rememberNavController())
-//}
+@Preview
+@Composable
+fun Previewhh(){
+    EatUpVerificationScreen(navController =  rememberNavController())
+}

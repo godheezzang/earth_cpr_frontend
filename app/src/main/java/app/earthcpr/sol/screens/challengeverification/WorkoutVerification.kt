@@ -46,10 +46,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.R
 import app.earthcpr.sol.screens.topbar.TopBar
 import okhttp3.MultipartBody
@@ -124,7 +126,7 @@ fun WorkOutVerification(navController: NavController) {
                 contentScale = ContentScale.Crop
             ) // 이미지 고르기 전
         } ?: Image(
-            painter = painterResource(id = R.drawable.receipt_long),  // 엥 베이스라인 .?
+            painter = painterResource(id = R.drawable.fitness_center),  // 엥 베이스라인 .?
             contentDescription = "",
             modifier = Modifier.size(180.dp)
         )
@@ -139,7 +141,7 @@ fun WorkOutVerification(navController: NavController) {
             modifier = Modifier
                 .width(220.dp)
                 .height(50.dp)
-                .padding(bottom = 16.dp),
+                .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
             Text("영수증 이미지 선택", color = Color.White, fontSize = 16.sp)
@@ -170,7 +172,7 @@ fun WorkOutVerification(navController: NavController) {
             modifier = Modifier
                 .width(220.dp)
                 .height(50.dp)
-                .padding(bottom = 16.dp),
+                .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
             Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp)
@@ -368,7 +370,7 @@ fun WorkOutVerificationScreen(
             )
             // 설명 텍스트
             Text(
-                text = "탬플러 사용 내역을 영수증으로 인증하고,\n챌린지를 달성하세요.",
+                text = "운동으로 인증하고,\n챌린지를 달성하세요.",
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
@@ -431,8 +433,8 @@ fun WorkOutVerificationScreen(
 
 
 
-//@Preview
-//@Composable
-//fun Previewhh(){
-//    ImageUploadScreen(navController =  rememberNavController())
-//}
+@Preview
+@Composable
+fun Previewhadadh(){
+    WorkOutVerificationScreen(navController =  rememberNavController())
+}

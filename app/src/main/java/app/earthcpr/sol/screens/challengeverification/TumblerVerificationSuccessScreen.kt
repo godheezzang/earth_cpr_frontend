@@ -47,7 +47,7 @@ fun TumblerVerificationSuccessScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = ""  ) {
+        TopBar(title = "텀블러 챌린지"  ) {
 
         }
 
@@ -149,8 +149,8 @@ fun TumblerVerificationSuccessScreen(
     }
 }
 
-//@Preview
-//@Composable
-//fun Previewhh(){
-//    EatUpImageUploadSuccessScreen(navController =  rememberNavController())
-//}
+@Preview
+@Composable
+fun Previewhhhhhh(){
+    TumblerVerificationSuccessScreen(navController =  rememberNavController())
+}
