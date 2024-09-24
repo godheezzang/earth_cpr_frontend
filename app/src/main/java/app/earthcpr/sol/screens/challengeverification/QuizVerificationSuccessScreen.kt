@@ -36,7 +36,7 @@ import app.earthcpr.sol.ui.theme.newFontFamily
 //import com.example.ht_practice.challengeScreen.ImageUploadSuccessScreen
 
 @Composable
-fun MiracleMorningVerificationSuccessScreen(
+fun QuizVerificationSuccessScreen(
     navController : NavController
 ) {
     val context = LocalContext.current
@@ -48,7 +48,7 @@ fun MiracleMorningVerificationSuccessScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = "미라클 모닝 챌린지"  ) {
+        TopBar(title = "챌린지 성공"  ) {
 
         }
 
@@ -70,7 +70,7 @@ fun MiracleMorningVerificationSuccessScreen(
             ) {
                 // "탬플러를 사용하셨나요?" 텍스트
                 Text(
-                    text = "일찍 일어나셨군요!",
+                    text = "퀴즈 챌린지에 성공하셨군요!",
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
@@ -106,7 +106,7 @@ fun MiracleMorningVerificationSuccessScreen(
 
                 // 인증 완료 메시지
                 Text(
-                    text = "미라클 모닝 챌린지 인증이 완료되었습니다.",
+                    text = "퀴즈 챌린지 인증이 완료되었습니다.",
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
@@ -157,6 +157,6 @@ fun MiracleMorningVerificationSuccessScreen(
 
 @Preview
 @Composable
-fun Previewhhhhh(){
-    MiracleMorningVerificationSuccessScreen(navController =  rememberNavController())
+fun Pasd(){
+    QuizVerificationSuccessScreen(navController =  rememberNavController())
 }

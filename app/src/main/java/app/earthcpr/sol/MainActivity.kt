@@ -34,6 +34,8 @@ import app.earthcpr.sol.screens.savings.success.SavingCreateAccountSuccessScreen
 import app.earthcpr.sol.ui.theme.SolApplicationTheme
 import app.earthcpr.sol.utils.PreferenceUtil
 import com.example.ht_practice.complete.MiracleMorningVerificationScreen
+//import com.example.ht_practice.friend.FriendRankingScreen
+//import com.example.ht_practice.friend.MyViewModel
 
 class MainActivity : ComponentActivity() {
     private val TAG = "MainActivity"
@@ -94,7 +96,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp() {
     val navController = rememberNavController()
-    var startDestination = "loginScreen"
+    var startDestination = "loginScreen"                // 첫 화면
 
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = "loginScreen") {
@@ -159,15 +161,16 @@ fun MyApp() {
                 backStackEntry.arguments?.getString("accountTypeUniqueNo") ?: ""
             val accountNo =
                 backStackEntry.arguments?.getString("accountNo") ?: ""
+// 임시 주석처리 ( 변수명 중복 )
 
-            SavingCreateMoneyByAccountUniqueNoScreen(
-                navigationToHomeScreen = { navController.navigate("homeScreen") },
-                navigationToMonthSelectScreen = { savingMoneyText, accountTypeUniqueNo, accountNo ->
-                    navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText&accountTypeUniqueNo=$accountTypeUniqueNo&accountNo=$accountNo")
-                },
-                accountTypeUniqueNo = accountTypeUniqueNo,
-                accountNo = accountNo
-            )
+//            SavingCreateMoneyByAccountUniqueNoScreen(
+//                navigationToHomeScreen = { navController.navigate("homeScreen") },
+//                navigationToMonthSelectScreen = { savingMoneyText, accountTypeUniqueNo, accountNo ->
+//                    navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText&accountTypeUniqueNo=$accountTypeUniqueNo&accountNo=$accountNo")
+//                },
+//                accountTypeUniqueNo = accountTypeUniqueNo,
+//                accountNo = accountNo
+//            )
         }
         composable(
             "savingMonthSelectScreen?savingMoneyText={savingMoneyText}&accountTypeUniqueNo={accountTypeUniqueNo}&accountNo={accountNo}",
@@ -235,7 +238,7 @@ fun MyApp() {
         composable("WorkOutVerificationScreen" ){ WorkOutVerificationScreen(navController) } // 텀블러
         composable("WorkOutVerificationSuccessScreen" ){ WorkOutVerificationSuccessScreen(navController) } // 텀블러
     
-        //composable("FriendRankingScreen" ){ FriendRankingScreen(MyViewModel() , navController) } // 친구 순위   >> 보류.... 무시하세요
+//        composable("FriendRankingScreen" ){ FriendRankingScreen(MyViewModel() , navController) } // 친구 순위   >> 보류.... 무시하세요
 
 
     }
