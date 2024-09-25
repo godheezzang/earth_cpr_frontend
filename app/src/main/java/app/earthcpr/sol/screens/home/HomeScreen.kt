@@ -68,8 +68,8 @@ fun HomeScreen(
         TopBar(title = "마이", showHomeButton = false)
         Spacer(modifier = Modifier.height(16.dp))
 
-//        val hasSavings = homeModel.accountList.isNotEmpty()
-        val hasSavings = false
+        val hasSavings = homeModel.accountList.isNotEmpty()
+//        val hasSavings = false
         Column(
             modifier = Modifier.weight(1f)
         ) {
