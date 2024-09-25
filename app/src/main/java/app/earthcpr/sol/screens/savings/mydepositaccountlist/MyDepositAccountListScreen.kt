@@ -212,7 +212,7 @@ fun MyDepositAccount(param: DepositAccount, onClick: () -> Unit, isSelected: Boo
                     val decimalFormat = DecimalFormat("#,###", symbols)
 
                     Text(
-                        text = "${decimalFormat.format(param.accountBalance)}원",
+                        text = "${decimalFormat.format(param.accountBalance.toDouble())}원",
                         fontFamily = newFontFamily,
                         fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
                         fontSize = 14.sp,
