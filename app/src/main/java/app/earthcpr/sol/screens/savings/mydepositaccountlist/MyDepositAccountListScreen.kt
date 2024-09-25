@@ -207,21 +207,12 @@ fun MyDepositAccount(param: DepositAccount, onClick: () -> Unit, isSelected: Boo
                     verticalAlignment = Alignment.CenterVertically
                 ) {
 //                    // 원하는 로케일을 지정
-//                    val locale = Locale("ko") // 또는 Locale("en", "US") 등
-//                    val symbols = DecimalFormatSymbols(locale)
-//                    val decimalFormat = DecimalFormat("#,###", symbols)
-//
-//                    Text(
-//                        text = "${decimalFormat.format(param.accountBalance)}원",
-//                        fontFamily = newFontFamily,
-//                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-//                        fontSize = 14.sp,
-//                    )
-                    val balance = param.getAccountBalanceAsLong()
-                    val formattedBalance = DecimalFormat("#,###", DecimalFormatSymbols(Locale("ko"))).format(balance)
+                    val locale = Locale("ko") // 또는 Locale("en", "US") 등
+                    val symbols = DecimalFormatSymbols(locale)
+                    val decimalFormat = DecimalFormat("#,###", symbols)
 
                     Text(
-                        text = formattedBalance+"원",
+                        text = "${decimalFormat.format(param.accountBalance.toDouble())}원",
                         fontFamily = newFontFamily,
                         fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
                         fontSize = 14.sp,

@@ -20,44 +20,43 @@ class MyDepositAccountListViewModel @Inject constructor() : ViewModel() {
     private val TAG: String = "SavingAccountListViewModel"
 
     init {
-        getMyDepositAccountList(loginId)
+        getMyDepositAccountList()
     }
 
     // 나의 적금 계좌 목록 조회 =
     private fun getMyDepositAccountList(
-        loginId: String
+//        loginId: String
     ) {
         viewModelScope.launch {
-            // coroutine
             try {
                 // todo
-                val requestBody = MyAccountListRequestBody(loginId)
-                val response = apiService.getDepositAccountList(requestBody)
-                MainActivity.preferences.getString("loginId", "")
-                MainActivity.initUserUuidIfNull()
-                Log.d(TAG, "My DepositAccountList $response")
-                if (response.success) {
-                    _myDepositAccountList.value = MyDepositAccountListModel(
-                        depositAccountList = response.data,
-                        hasError = false
-                    )
-                } else {
-                    _myDepositAccountList.value = MyDepositAccountListModel(hasError = true)
-                }
+//                val requestBody = CreateAccountRequestBody(email)
+//                val userUuid = apiService.postSavingAccount(requestBody).result
+//                MainActivity.preferences.setString("userUuid", userUuid ?: "")
+//                MainActivity.initUserUuidIfNull()
+                _myDepositAccountList.value = MyDepositAccountListModel(
+                    depositAccountList = MockDepositAccountListApiData.depositAccountList,
+                    hasError = false
+                )
             } catch (e: Exception) {
-                Log.e(TAG, "[사용자별 입출금 계좌 조회] API ERROR OCCURED message:", e)
+                Log.e(TAG, "[사용자별 입출금 계좌 조회] API ERROR OCCURED")
             }
         }
     }
 }
-
 
 data class MyDepositAccountListModel(
     val depositAccountList: List<DepositAccount> = emptyList(),
     val hasError: Boolean = false
 )
 
-data class DepositAccountListResponse(
-    val success: Boolean,
-    val data: List<DepositAccount>
-)
+
+//data class MyDepositAccountListModel(
+//    val depositAccountList: List<DepositAccount> = emptyList(),
+//    val hasError: Boolean = false
+//)
+//
+//data class DepositAccountListResponse(
+//    val success: Boolean,
+//    val data: List<DepositAccount>
+//)
