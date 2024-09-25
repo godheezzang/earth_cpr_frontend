@@ -55,6 +55,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.R
 import app.earthcpr.sol.screens.topbar.TopBar
+import app.earthcpr.sol.ui.theme.newFontFamily
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -174,9 +175,10 @@ fun EatUpVerification(navController: NavController) {
                 .width(220.dp)
                 .height(50.dp)
                 .padding(bottom = 10.dp),
+
             shape = MaterialTheme.shapes.medium
         ) {
-            Text("빈그릇 이미지 선택", color = Color.White, fontSize = 16.sp)
+            Text("이미지 선택", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily)
         }
 
         Button(
@@ -207,7 +209,7 @@ fun EatUpVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp)
+            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily)
         }
 
         if (showDialog) {
@@ -408,7 +410,8 @@ fun EatUpVerificationScreen(
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
+                    color = Color.Black,
+                    fontFamily = newFontFamily
                 ),
                 textAlign = TextAlign.Left,
                 modifier = Modifier.padding(bottom = 8.dp)
@@ -419,7 +422,8 @@ fun EatUpVerificationScreen(
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Gray
+                    color = Color.Gray,
+                    fontFamily = newFontFamily,
                 ),
                 textAlign = TextAlign.Left,
                 modifier = Modifier.padding(bottom = 32.dp)
@@ -463,7 +467,7 @@ fun EatUpVerificationScreen(
             ) {
                 Text(
                     text = "챌린지 목록",
-                    fontFamily = null,
+                    fontFamily = newFontFamily,
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold

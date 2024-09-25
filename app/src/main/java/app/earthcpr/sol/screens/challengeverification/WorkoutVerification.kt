@@ -54,6 +54,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.R
 import app.earthcpr.sol.screens.topbar.TopBar
+import app.earthcpr.sol.ui.theme.newFontFamily
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -144,7 +145,7 @@ fun WorkOutVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text("영수증 이미지 선택", color = Color.White, fontSize = 16.sp)
+            Text("이미지 선택", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily,)
         }
 
         Button(
@@ -175,7 +176,7 @@ fun WorkOutVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp)
+            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily,)
         }
 
         if (showDialog) {
@@ -343,7 +344,7 @@ fun WorkOutVerificationScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = " 챌린지"  ) {
+        TopBar(title = "워크 아웃 챌린지"  ) {
 
         }
 
@@ -363,18 +364,20 @@ fun WorkOutVerificationScreen(
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
+                    color = Color.Black,
+                    fontFamily = newFontFamily,
                 ),
                 textAlign = TextAlign.Left,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             // 설명 텍스트
             Text(
-                text = "운동으로 인증하고,\n챌린지를 달성하세요.",
+                text = "운동 이미지로 인증하고,\n챌린지를 달성하세요.",
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Gray
+                    color = Color.Gray,
+                    fontFamily = newFontFamily,
                 ),
                 textAlign = TextAlign.Left,
                 modifier = Modifier.padding(bottom = 32.dp)
@@ -418,7 +421,7 @@ fun WorkOutVerificationScreen(
             ) {
                 Text(
                     text = "챌린지 목록",
-                    fontFamily = null,
+                    fontFamily = newFontFamily,
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold

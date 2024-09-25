@@ -57,6 +57,7 @@ import app.earthcpr.sol.screens.challengeverification.ApiService
 import app.earthcpr.sol.screens.challengeverification.apiService
 import app.earthcpr.sol.screens.challengeverification.rememberImagePainter
 import app.earthcpr.sol.screens.topbar.TopBar
+import app.earthcpr.sol.ui.theme.newFontFamily
 //import com.example.ht_practice.R
 //import com.example.ht_practice.TopBar.TopBar
 import okhttp3.MultipartBody
@@ -147,7 +148,7 @@ fun MiracleMorningVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text("이미지 선택", color = Color.White, fontSize = 16.sp)
+            Text("이미지 선택", color = Color.White, fontSize = 16.sp ,fontFamily = newFontFamily,)
         }
 
         Button(
@@ -178,7 +179,7 @@ fun MiracleMorningVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp)
+            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily,)
         }
 
         if (showDialog) {
@@ -351,22 +352,24 @@ fun MiracleMorningVerificationScreen(
 
             // "탬플러를 사용하셨나요?" 텍스트
             Text(
-                text = "아침 햇살보다 이르게 일어나셨나요?",
+                text = "일찍 일어나셨나요?",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
+                    color = Color.Black,
+                    fontFamily = newFontFamily,
                 ),
                 textAlign = TextAlign.Left,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             // 설명 텍스트
             Text(
-                text = "일찍 일어나서 인증하고,\n챌린지를 달성하세요.",
+                text = "미라클 모닝 성공을 이미지로 인증하고,\n챌린지를 달성하세요.",
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Gray
+                    color = Color.Gray,
+                    fontFamily = newFontFamily,
                 ),
                 textAlign = TextAlign.Left,
                 modifier = Modifier.padding(bottom = 32.dp)
@@ -410,7 +413,7 @@ fun MiracleMorningVerificationScreen(
             ) {
                 Text(
                     text = "챌린지 목록",
-                    fontFamily = null,
+                    fontFamily = newFontFamily,
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold

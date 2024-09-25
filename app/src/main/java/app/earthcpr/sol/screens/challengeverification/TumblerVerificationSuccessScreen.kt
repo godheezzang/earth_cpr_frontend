@@ -32,6 +32,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.screens.topbar.TopBar
+import app.earthcpr.sol.ui.theme.newFontFamily
+
 //import com.example.ht_practice.challengeScreen.ImageUploadSuccessScreen
 
 @Composable
@@ -73,7 +75,8 @@ fun TumblerVerificationSuccessScreen(
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.Black
+                        color = Color.Black,
+                        fontFamily = newFontFamily,
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 8.dp)
@@ -85,7 +88,8 @@ fun TumblerVerificationSuccessScreen(
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Normal,
-                        color = Color.Gray
+                        color = Color.Gray,
+                        fontFamily = newFontFamily,
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 32.dp)
@@ -107,7 +111,8 @@ fun TumblerVerificationSuccessScreen(
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.Black
+                        color = Color.Black,
+                        fontFamily = newFontFamily,
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 58.dp)
@@ -137,7 +142,7 @@ fun TumblerVerificationSuccessScreen(
             ) {
                 Text(
                     text = "챌린지 목록",
-                    fontFamily = null,
+                    fontFamily = newFontFamily,
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
