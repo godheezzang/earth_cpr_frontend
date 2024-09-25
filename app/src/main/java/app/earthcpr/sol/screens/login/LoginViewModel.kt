@@ -46,13 +46,13 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             // coroutine
             try {
-                val requestBody = LoginRequestBody(loginId, password)
-                val response = apiService.postLogin(requestBody)
-                Log.d(TAG, "response: $response")
-
-
-                MainActivity.preferences.setString("loginId", loginId)
-                MainActivity.initUserUuidIfNull()
+//                val requestBody = LoginRequestBody(loginId, password)
+//                val response = apiService.postLogin(requestBody)
+//                Log.d(TAG, "response: $response")
+//
+//
+//                MainActivity.preferences.setString("loginId", loginId)
+//                MainActivity.initUserUuidIfNull()
                 onSuccess()
             } catch (e: Exception) {
                 Log.e(TAG, "[/login] API ERROR OCCURED: ${e.message}")

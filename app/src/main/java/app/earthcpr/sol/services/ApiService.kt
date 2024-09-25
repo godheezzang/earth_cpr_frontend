@@ -6,7 +6,6 @@ import app.earthcpr.sol.models.api.request.JoinRequestBody
 import app.earthcpr.sol.models.api.request.LoginRequestBody
 import app.earthcpr.sol.models.api.request.MyAccountListRequestBody
 //import app.earthcpr.sol.screens.savings.myaccountlist.AccountListResponse
-import app.earthcpr.sol.screens.savings.mydepositaccountlist.DepositAccountListResponse
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -71,31 +70,37 @@ private val retrofit = Retrofit.Builder()
 // ApiService 내에 여러 fun 들을 추가하면 된다.
 val apiService = retrofit.create(ApiService::class.java)
 interface ApiService {
-
-    // get, post 예시코드
-//    @GET("/coin")
-//    suspend fun getUserCoin(@Query("userUuid") userUuid: String): ApiResponse<UserCoinResponse>
-
-//    @POST("/reward/daily")
-//    suspend fun postDailyReward(@Body request: UserIdRequest): ApiResponse<String>
-
     // [API] 로그인
-    @POST("user/login")
-    suspend fun postLogin(@Body request: LoginRequestBody): ApiResponse<String?>
+    @POST("/login")
+    suspend fun postLogin(@Body request: LoginRequestBody): ApiResponse<String>
 
     // [API] 회원가입
-    @POST("user/create")
+    @POST("/user")
     suspend fun postJoin(@Body request: JoinRequestBody): ApiResponse<String>
 
     // [API] 적금 계좌 등록
-    @POST("save/create/savingaccount")
-    suspend fun postSavingAccount(@Body request: CreateAccountRequestBody): ApiResponse<String>
+    @POST("/api/v1/save/create/savingaccount")
+    suspend fun postSavingAccount(@Body request: JoinRequestBody): ApiResponse<String>
+}
+
+
+    // [API] 로그인
+//    @POST("user/login")
+//    suspend fun postLogin(@Body request: LoginRequestBody): ApiResponse<String?>
+//
+//    // [API] 회원가입
+//    @POST("user/create")
+//    suspend fun postJoin(@Body request: JoinRequestBody): ApiResponse<String>
+
+    // [API] 적금 계좌 등록
+//    @POST("save/create/savingaccount")
+//    suspend fun postSavingAccount(@Body request: CreateAccountRequestBody): ApiResponse<String>
 
     // [API] 적금 계좌 목록 조회
 //    @POST("save/get/savingaccount")
 //    suspend fun getMyAccountList(@Body request: MyAccountListRequestBody): AccountListResponse
 
     // [API] 사용자 입출금 통장 목록 조회
-    @POST("deposit/get/depositaccounts")
-    suspend fun getDepositAccountList(@Body request: MyAccountListRequestBody): DepositAccountListResponse
-}
+//    @POST("deposit/get/depositaccounts")
+//    suspend fun getDepositAccountList(@Body request: MyAccountListRequestBody): DepositAccountListResponse
+//}
