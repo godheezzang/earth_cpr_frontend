@@ -163,16 +163,15 @@ fun MyApp() {
                 backStackEntry.arguments?.getString("accountTypeUniqueNo") ?: ""
             val accountNo =
                 backStackEntry.arguments?.getString("accountNo") ?: ""
-// 임시 주석처리 ( 변수명 중복 )
 
-//            SavingCreateMoneyByAccountUniqueNoScreen(
-//                navigationToHomeScreen = { navController.navigate("homeScreen") },
-//                navigationToMonthSelectScreen = { savingMoneyText, accountTypeUniqueNo, accountNo ->
-//                    navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText&accountTypeUniqueNo=$accountTypeUniqueNo&accountNo=$accountNo")
-//                },
-//                accountTypeUniqueNo = accountTypeUniqueNo,
-//                accountNo = accountNo
-//            )
+            SavingCreateMoneyByAccountUniqueNoScreen(
+                navigationToHomeScreen = { navController.navigate("homeScreen") },
+                navigationToMonthSelectScreen = { savingMoneyText, accountTypeUniqueNo, accountNo ->
+                    navController.navigate("savingMonthSelectScreen?savingMoneyText=$savingMoneyText&accountTypeUniqueNo=$accountTypeUniqueNo&accountNo=$accountNo")
+                },
+                accountTypeUniqueNo = accountTypeUniqueNo,
+                accountNo = accountNo
+            )
         }
         composable(
             "savingMonthSelectScreen?savingMoneyText={savingMoneyText}&accountTypeUniqueNo={accountTypeUniqueNo}&accountNo={accountNo}",

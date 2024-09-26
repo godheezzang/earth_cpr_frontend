@@ -60,29 +60,30 @@ class JoinViewModel @Inject constructor() : ViewModel() {
 
     fun createUser(
         onSuccess: () -> Unit,
-        loginId: String,
-        password: String,
-        userNickname: String,
+//        loginId: String,
+//        password: String,
+//        userNickname: String,
     ) {
         viewModelScope.launch {
             // coroutine
             try {
-                val requestBody = JoinRequestBody(loginId, password, userNickname)
-
-                // todo api 연동
-                val response = apiService.postJoin(requestBody);
-
-                Log.d(TAG, "Response: $response")
-
-
-                    if (response.success) {
-                        // todo 성공시 onSuccess 호출
-                        onSuccess()
-                    } else {
-                        // todo
-                        // 이미 가입한 경우
-                        _isEmailAlreadyJoined.value = true
-                    }
+//                val requestBody = JoinRequestBody(loginId, password, userNickname)
+//
+//                // todo api 연동
+//                val response = apiService.postJoin(requestBody);
+//
+//                Log.d(TAG, "Response: $response")
+//
+//
+//                    if (response.success) {
+//                        // todo 성공시 onSuccess 호출
+//                        onSuccess()
+//                    } else {
+//                        // todo
+//                        // 이미 가입한 경우
+//                        _isEmailAlreadyJoined.value = true
+//                    }
+                onSuccess()
             } catch (e: Exception) {
                 Log.e(TAG, "[ERROR] apiService.postJoin(requestBody) message: ", e)
                 // 회원가입 실패했습니다 처리

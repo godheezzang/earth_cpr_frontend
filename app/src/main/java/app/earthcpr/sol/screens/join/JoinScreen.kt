@@ -260,9 +260,9 @@ fun JoinScreen(
                         if (joinButtonEnable) {
                             joinViewModel.createUser(
                                 navigationToLoginScreen,
-                                loginId,
-                                password,
-                                userNickname
+//                                loginId,
+//                                password,
+//                                userNickname
                             )
                         }
                     },

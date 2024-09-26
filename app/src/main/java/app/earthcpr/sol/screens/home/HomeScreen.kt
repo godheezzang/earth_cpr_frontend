@@ -67,9 +67,9 @@ fun HomeScreen(
     ) {
         TopBar(title = "마이", showHomeButton = false)
         Spacer(modifier = Modifier.height(16.dp))
-
-        val hasSavings = homeModel.accountList.isNotEmpty()
-//        val hasSavings = false
+        // 사용자가 가입한 적금 계좌 유무에 따라 목록 렌더링 변화
+//        val hasSavings = homeModel.accountList.isNotEmpty()
+        val hasSavings = false
         Column(
             modifier = Modifier.weight(1f)
         ) {
