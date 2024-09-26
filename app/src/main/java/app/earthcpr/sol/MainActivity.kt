@@ -21,6 +21,8 @@ import app.earthcpr.sol.screens.challengeverification.TumblerVerificationScreen
 import app.earthcpr.sol.screens.challengeverification.TumblerVerificationSuccessScreen
 import app.earthcpr.sol.screens.challengeverification.WorkOutVerificationScreen
 import app.earthcpr.sol.screens.challengeverification.WorkOutVerificationSuccessScreen
+import app.earthcpr.sol.screens.friend.FriendRankingScreen
+import app.earthcpr.sol.screens.friend.MyViewModel
 import app.earthcpr.sol.screens.join.JoinScreen
 import app.earthcpr.sol.screens.login.LoginScreen
 import app.earthcpr.sol.screens.home.HomeScreen
@@ -237,8 +239,8 @@ fun MyApp() {
 
         composable("WorkOutVerificationScreen" ){ WorkOutVerificationScreen(navController) } // 텀블러
         composable("WorkOutVerificationSuccessScreen" ){ WorkOutVerificationSuccessScreen(navController) } // 텀블러
-    
-//        composable("FriendRankingScreen" ){ FriendRankingScreen(MyViewModel() , navController) } // 친구 순위   >> 보류.... 무시하세요
+        // 친구랭킹 ( 일단 작성만 해두고 기능 추가는 안했음 언제든 버튼 하나만 만들면 이동 가능)
+        composable("FriendRankingScreen" ){ FriendRankingScreen(MyViewModel() , navController) } // 친구 순위   >> 보류.... 무시하세요
 
 
     }

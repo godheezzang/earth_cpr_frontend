@@ -1,5 +1,9 @@
 package app.earthcpr.sol.screens.friend
 
+// 임시 데이터로 UI , 삭제 기능 구현
+
+
+
 // REST API 통신 후 받아온 데이터를
 // 리스트로 뿌려줘야함
 
@@ -269,6 +273,7 @@ fun FriendRankingScreen(viewModel: MyViewModel = viewModel() , navController: Na
             Text(text = "이름")
 //            }
         }
+        Spacer(modifier = Modifier.height(8.dp))
         LazyColumn(
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -338,6 +343,26 @@ fun SearchBar() {  // user_id를 입력하면 친구 추가 요청을 보낼 API
 
 @Composable
 fun RankingItem(rank : Int  , name: String, achievement: String , onRemove : () -> Unit ) {    // 친구 순위 보여주는 함수
+    val posts by MyViewModel().posts.collectAsState()
+
+    LazyColumn {
+        items(posts) { post ->
+            Column(modifier = Modifier.padding(10.dp)) {
+                Row {
+                    Text(text = name.toString())
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(text = achievement.toString())
+                    Spacer(modifier = Modifier.width(10.dp))
+                }
+            }
+
+
+
+        }
+    }
+
+
+
 
     Row(
         modifier = Modifier
@@ -454,13 +479,13 @@ fun TopBarRank(
 //        viewModel.fetchPosts()
 //    }
 
-//    LazyC@Composable
+//    @Composable
 //fun PostListScreen(viewModel: MyViewModel = viewModel()) {
 //    val posts by viewModel.posts.collectAsState()
 //
 //    LaunchedEffect(Unit) {
 //        viewModel.fetchPosts()
-//    }olumn {
+//    }LazyColumn {
 //        items(posts) { post ->
 //            Column(modifier = Modifier.padding(10.dp)) {
 //                Row {

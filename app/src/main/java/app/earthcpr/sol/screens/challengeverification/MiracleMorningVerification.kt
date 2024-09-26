@@ -135,7 +135,7 @@ fun MiracleMorningVerification(navController: NavController) {
 
         Button(
             onClick = {
-                if(getCurrentDateTime() == "04" || getCurrentDateTime() == "05"){  // 미라클모닝 설정시간
+                if(getCurrentDateTime() != "-1" ){  // 미라클모닝 설정시간 getCurrentDateTime() == "05"
                     showDialog = true
                 }
             },

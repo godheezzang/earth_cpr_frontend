@@ -424,7 +424,7 @@ fun WorkOutVerificationScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable {
-                        navController.navigate("homeScreen")
+                        navController.navigate("FriendRankingScreen")
                     },
                 contentAlignment = Alignment.Center,
             ) {

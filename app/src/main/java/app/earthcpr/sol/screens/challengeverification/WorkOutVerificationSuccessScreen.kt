@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import app.earthcpr.sol.screens.topbar.TopBar
+import app.earthcpr.sol.ui.theme.newFontFamily
 
 @Composable
 fun WorkOutVerificationSuccessScreen(
@@ -83,7 +84,8 @@ fun WorkOutVerificationSuccessScreen(
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
-                        color = Color.Gray
+                        color = Color.Gray,
+                        fontFamily = newFontFamily,
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 32.dp)
@@ -105,7 +107,8 @@ fun WorkOutVerificationSuccessScreen(
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = Color.Black
+                        color = Color.Black,
+                        fontFamily = newFontFamily,
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 58.dp)
@@ -140,7 +143,7 @@ fun WorkOutVerificationSuccessScreen(
             ) {
                 Text(
                     text = "챌린지 목록",
-                    fontFamily = null,
+                    fontFamily = newFontFamily,
                     color = Color.White,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
