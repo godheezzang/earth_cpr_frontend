@@ -46,7 +46,7 @@ fun WorkOutVerificationSuccessScreen(
         Spacer(modifier = Modifier.height(44.dp))
 
         TopBar(title = "운동 챌린지"  ) {
-
+            navController.navigate("homeScreen")
         }
 
 //        Spacer(modifier = Modifier.height(108.dp))
@@ -70,7 +70,7 @@ fun WorkOutVerificationSuccessScreen(
                     text = "운동을 하셨군요!",
                     style = TextStyle(
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Black
                     ),
                     textAlign = TextAlign.Center,
@@ -82,7 +82,7 @@ fun WorkOutVerificationSuccessScreen(
                     text = "최고에요! 계속해서 챌린지에 도전하세요!.",
                     style = TextStyle(
                         fontSize = 14.sp,
-                        fontWeight = FontWeight.Normal,
+                        fontWeight = FontWeight.Medium,
                         color = Color.Gray
                     ),
                     textAlign = TextAlign.Center,
@@ -104,7 +104,7 @@ fun WorkOutVerificationSuccessScreen(
                     text = "운동 실천 인증이 완료되었습니다.",
                     style = TextStyle(
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Black
                     ),
                     textAlign = TextAlign.Center,
@@ -121,7 +121,11 @@ fun WorkOutVerificationSuccessScreen(
             modifier = Modifier
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp, bottom = 10.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .clickable {
+                    // 'homeScreen'으로 네비게이션
+                    navController.navigate("challengeHistoryScreen")
+                },
             colors = CardDefaults.cardColors(
                 containerColor = Color(0xFF0046FF),
             )
@@ -130,6 +134,7 @@ fun WorkOutVerificationSuccessScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable {
+                        navController.navigate("homeScreen")
                     },
                 contentAlignment = Alignment.Center,
             ) {
@@ -137,8 +142,8 @@ fun WorkOutVerificationSuccessScreen(
                     text = "챌린지 목록",
                     fontFamily = null,
                     color = Color.White,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }

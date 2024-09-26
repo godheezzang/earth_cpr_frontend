@@ -127,7 +127,7 @@ fun WorkOutVerification(navController: NavController) {
                 contentScale = ContentScale.Crop
             ) // 이미지 고르기 전
         } ?: Image(
-            painter = painterResource(id = R.drawable.fitness_center),  // 엥 베이스라인 .?
+            painter = painterResource(id = R.drawable.workout),  // 엥 베이스라인 .?
             contentDescription = "",
             modifier = Modifier.size(180.dp)
         )
@@ -145,28 +145,32 @@ fun WorkOutVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text("이미지 선택", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily,)
+            Text("이미지 선택", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily,fontWeight = FontWeight.SemiBold,)
         }
 
         Button(
             onClick = {
-                selectedImageUri?.let { uri ->
-                    uploadImage(apiService, context, uri, "1", "1" ,  ){ success, error ->
-                        if (success) {
-                            errorMessage = "이미지 업로드 성공"
-                        } else {
-                            errorMessage = error
-                        }
-                    }
-                } ?: capturedImageBitmap?.let { bitmap ->
-                    uploadImage(apiService, context, bitmap, "1", "1"){ success, error ->
-                        if (success) {
-                            errorMessage = "이미지 업로드 성공"
-                        } else {
-                            errorMessage = error
-                        }
-                    }
+                selectedImageUri?.let { //uri ->
+//                    uploadImage(apiService, context, uri, "1", "1" ,  ){ success, error ->
+//                        if (success) {
+//                            errorMessage = "이미지 업로드 성공"
+//                        } else {
+//                            errorMessage = error
+//                        }
+//                    }
+                    navController.navigate("WorkOutVerificationSuccessScreen")
+                } ?: capturedImageBitmap?.let { //bitmap ->
+//                    uploadImage(apiService, context, bitmap, "1", "1"){ success, error ->
+//                        if (success) {
+//                            errorMessage = "이미지 업로드 성공"
+//                        } else {
+//                            errorMessage = error
+//                        }
+//                    }
+                    navController.navigate("WorkOutVerificationSuccessScreen")
                 }
+                navController.navigate("WorkOutVerificationSuccessScreen")
+
                 Log.d("TAG", "이미지 전송 성공")
             },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0044FF)),
@@ -176,7 +180,7 @@ fun WorkOutVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily,)
+            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily,fontWeight = FontWeight.SemiBold,)
         }
 
         if (showDialog) {
@@ -344,8 +348,8 @@ fun WorkOutVerificationScreen(
     ) {
         Spacer(modifier = Modifier.height(44.dp))
 
-        TopBar(title = "워크 아웃 챌린지"  ) {
-
+        TopBar(title = "운동 챌린지"  ) {
+            navController.navigate("homeScreen")
         }
 
 //        Spacer(modifier = Modifier.height(108.dp))
@@ -363,7 +367,7 @@ fun WorkOutVerificationScreen(
                 text = "운동을 하셨나요?",
                 style = TextStyle(
                     fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.SemiBold,
                     color = Color.Black,
                     fontFamily = newFontFamily,
                 ),
@@ -375,7 +379,7 @@ fun WorkOutVerificationScreen(
                 text = "운동 이미지로 인증하고,\n챌린지를 달성하세요.",
                 style = TextStyle(
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.Normal,
+                    fontWeight = FontWeight.Medium,
                     color = Color.Gray,
                     fontFamily = newFontFamily,
                 ),
@@ -407,7 +411,11 @@ fun WorkOutVerificationScreen(
             modifier = Modifier
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp, bottom = 10.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .clickable {
+                    // 'homeScreen'으로 네비게이션
+                    navController.navigate("challengeHistoryScreen")
+                },
             colors = CardDefaults.cardColors(
                 containerColor = Color(0xFF0046FF),
             )
@@ -416,6 +424,7 @@ fun WorkOutVerificationScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable {
+                        navController.navigate("homeScreen")
                     },
                 contentAlignment = Alignment.Center,
             ) {
@@ -423,8 +432,8 @@ fun WorkOutVerificationScreen(
                     text = "챌린지 목록",
                     fontFamily = newFontFamily,
                     color = Color.White,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }

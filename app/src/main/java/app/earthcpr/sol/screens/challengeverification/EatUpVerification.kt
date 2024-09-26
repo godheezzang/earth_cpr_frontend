@@ -178,28 +178,33 @@ fun EatUpVerification(navController: NavController) {
 
             shape = MaterialTheme.shapes.medium
         ) {
-            Text("이미지 선택", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily)
+            Text("이미지 선택", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily ,fontWeight = FontWeight.SemiBold,)
         }
 
         Button(
-            onClick = {
-                selectedImageUri?.let { uri ->
-                    uploadImage(apiService, context, uri, "1", "1" ,  ){ success, error ->
-                        if (success) {
-                            errorMessage = "이미지 업로드 성공"
-                        } else {
-                            errorMessage = error
-                        }
-                    }
-                } ?: capturedImageBitmap?.let { bitmap ->
-                    uploadImage(apiService, context, bitmap, "1", "1"){ success, error ->
-                        if (success) {
-                            errorMessage = "이미지 업로드 성공"
-                        } else {
-                            errorMessage = error
-                        }
-                    }
+            onClick = {  // 선택된 이미지가 있으면 성공
+                selectedImageUri?.let { //uri ->
+//                    uploadImage(apiService, context, uri, "1", "1" ,  ){ success, error ->
+//                        if (success) {
+//                            errorMessage = "이미지 업로드 성공"
+//                        } else {
+//                            errorMessage = error
+//                        }
+//                    }
+                    navController.navigate("EatUpVerificationSuccessScreen")
+                                // 사진촬영 완료시 성공 이미지로 넘기기
+                } ?: capturedImageBitmap?.let { //bitmap ->
+//                    uploadImage(apiService, context, bitmap, "1", "1"){ success, error ->
+//                        if (success) {
+//                            errorMessage = "이미지 업로드 성공"
+//                        } else {
+//                            errorMessage = error
+//                        }
+//                    }
+                    navController.navigate("EatUpVerificationSuccessScreen")
                 }
+                navController.navigate("EatUpVerificationSuccessScreen")
+
                 Log.d("TAG", "이미지 전송 성공")
             },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0044FF)),
@@ -209,7 +214,7 @@ fun EatUpVerification(navController: NavController) {
                 .padding(bottom = 10.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily)
+            Text(text = "이미지 전송", color = Color.White, fontSize = 16.sp , fontFamily = newFontFamily , fontWeight = FontWeight.SemiBold,)
         }
 
         if (showDialog) {
@@ -391,7 +396,7 @@ fun EatUpVerificationScreen(
         Spacer(modifier = Modifier.height(44.dp))
 
         TopBar(title = "빈그릇 챌린지"  ) {
-
+        navController.navigate("homeScreen")
         }
 
 //        Spacer(modifier = Modifier.height(108.dp))
@@ -409,7 +414,7 @@ fun EatUpVerificationScreen(
                 text = "식사를 마치셨나요?",
                 style = TextStyle(
                     fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.SemiBold,
                     color = Color.Black,
                     fontFamily = newFontFamily
                 ),
@@ -421,7 +426,7 @@ fun EatUpVerificationScreen(
                 text = "깔끔한 그릇을 인증하고,\n챌린지를 달성하세요.",
                 style = TextStyle(
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.Normal,
+                    fontWeight = FontWeight.Medium,
                     color = Color.Gray,
                     fontFamily = newFontFamily,
                 ),
@@ -453,7 +458,11 @@ fun EatUpVerificationScreen(
             modifier = Modifier
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp, bottom = 10.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .clickable {
+            // 'homeScreen'으로 네비게이션
+                navController.navigate("homeScreen")
+            },
             colors = CardDefaults.cardColors(
                 containerColor = Color(0xFF0046FF),
             )
@@ -462,6 +471,7 @@ fun EatUpVerificationScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable {
+                        navController.navigate("homeScreen")
                     },
                 contentAlignment = Alignment.Center,
             ) {
@@ -484,6 +494,6 @@ fun EatUpVerificationScreen(
 
 @Preview
 @Composable
-fun Previewhh(){
+fun Previewhh123(){
     EatUpVerificationScreen(navController =  rememberNavController())
 }

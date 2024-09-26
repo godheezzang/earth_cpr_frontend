@@ -49,7 +49,7 @@ fun MiracleMorningVerificationSuccessScreen(
         Spacer(modifier = Modifier.height(44.dp))
 
         TopBar(title = "미라클 모닝 챌린지"  ) {
-
+            navController.navigate("homeScreen")
         }
 
 //        Spacer(modifier = Modifier.height(108.dp))
@@ -73,7 +73,7 @@ fun MiracleMorningVerificationSuccessScreen(
                     text = "일찍 일어나셨군요!",
                     style = TextStyle(
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Black,
                         fontFamily = newFontFamily,
                     ),
@@ -86,7 +86,7 @@ fun MiracleMorningVerificationSuccessScreen(
                     text = "최고에요! 계속해서 챌린지에 도전하세요!.",
                     style = TextStyle(
                         fontSize = 14.sp,
-                        fontWeight = FontWeight.Normal,
+                        fontWeight = FontWeight.Medium,
                         color = Color.Gray,
                         fontFamily = newFontFamily,
                     ),
@@ -109,7 +109,7 @@ fun MiracleMorningVerificationSuccessScreen(
                     text = "미라클 모닝 챌린지 인증이 완료되었습니다.",
                     style = TextStyle(
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Black,
                         fontFamily = newFontFamily,
                     ),
@@ -127,7 +127,11 @@ fun MiracleMorningVerificationSuccessScreen(
             modifier = Modifier
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp, bottom = 10.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .clickable {
+                    // 'homeScreen'으로 네비게이션
+                    navController.navigate("challengeHistoryScreen")
+                },
             colors = CardDefaults.cardColors(
                 containerColor = Color(0xFF0046FF),
             )
@@ -136,6 +140,7 @@ fun MiracleMorningVerificationSuccessScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable {
+                        navController.navigate("homeScreen")
                     },
                 contentAlignment = Alignment.Center,
             ) {
@@ -144,7 +149,7 @@ fun MiracleMorningVerificationSuccessScreen(
                     fontFamily = newFontFamily,
                     color = Color.White,
                     fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }
