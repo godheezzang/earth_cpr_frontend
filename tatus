@@ -1,0 +1,334 @@
+[33mcommit df8916adb0f07644c0319b5db303ab5d875bae4c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Thu Sep 26 14:23:24 2024 +0900
+
+    update : challengeVerification 수정, readmeImage challengeVerification.png 추가
+
+[33mcommit c1a32ac7e0f1bc2cf0c1d6f4b4410e5693190e52[m
+Author: 이윤호 <134574255+dldbsgh00005@users.noreply.github.com>
+Date:   Thu Sep 26 14:20:21 2024 +0900
+
+    Delete readmeImage/tumbler.png
+
+[33mcommit 987b75e35e745fa0d17f43cdcb1360994c839180[m
+Merge: 2674ddb 5705467
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Wed Sep 25 22:51:26 2024 +0900
+
+    Merge pull request #17 from EARTH-CPR/feature/refactor
+    
+    Modify: 홈스크린 적금 계좌 유무별 렌더링하게 수정
+
+[33mcommit 5705467483fbfc72f672cdb42e1721b35ad57896[m[33m ([m[1;31morigin/feature/refactor[m[33m)[m
+Author: 박가희 <930_10@naver.com>
+Date:   Wed Sep 25 22:48:27 2024 +0900
+
+    Modify: 홈스크린 적금 계좌 유무별 렌더링하게 수정
+
+[33mcommit 2674ddb85f40ef8ea6356ea97a6ff52175843740[m
+Merge: 34b77b3 f32c50f
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Wed Sep 25 22:45:57 2024 +0900
+
+    Merge pull request #15 from EARTH-CPR/feature/quizverification
+    
+    create : quizverification
+
+[33mcommit 34b77b37a14492b7ae637e4b34fbf4616f779085[m
+Merge: ec824f2 bc980e5
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Wed Sep 25 22:44:53 2024 +0900
+
+    Merge pull request #16 from EARTH-CPR/feature/refactor
+    
+    Feature/refactor
+
+[33mcommit bc980e58eafc2560d5d4ba877f2603a6fe1884f8[m
+Author: godheezzang <930_10@naver.com>
+Date:   Wed Sep 25 22:30:45 2024 +0900
+
+    Modify: L 제거
+
+[33mcommit b525e684e31837b7c582c565a5320e8304aa0e72[m
+Author: 박가희 <930_10@naver.com>
+Date:   Wed Sep 25 21:53:37 2024 +0900
+
+    refactor: 자잘한 버그 수정중
+
+[33mcommit f32c50f51707ea475bf51711ebae22ce406c42f5[m[33m ([m[1;31morigin/feature/quizverification[m[33m, [m[1;32mfeature/quizverification[m[33m)[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Tue Sep 24 16:49:46 2024 +0900
+
+    create : quizverification
+
+[33mcommit ec824f25fa780c685c1fd3c3c3fb771c2a0aceea[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Thu Sep 19 17:18:34 2024 +0900
+
+    add:챌린지 검증 화면 모두 및성공 화면 수정
+
+[33mcommit 0dbb62b2b4aa251ca5111b5ab10f3dcf0e19a6a7[m
+Merge: 791b12e b767a56
+Author: 박가희 <930_10@naver.com>
+Date:   Sat Aug 31 17:53:32 2024 +0900
+
+    Merge branch 'main' of https://github.com/EARTH-CPR/Frontend
+
+[33mcommit b767a568519aedfafed3e2ac49b041b39dc090eb[m
+Author: haazz <gkwldnjs121@gmail.com>
+Date:   Sat Aug 31 17:53:08 2024 +0900
+
+    feat: readme.md
+
+[33mcommit 791b12e8c6b2a37abace93c4c68293a2e213b265[m
+Author: 박가희 <930_10@naver.com>
+Date:   Sat Aug 31 17:46:28 2024 +0900
+
+    api 연동 수정
+
+[33mcommit cc63e79c49b7da933b8dbd06cd567efc84f59061[m
+Author: haazz <127824457+haazz@users.noreply.github.com>
+Date:   Sat Aug 31 17:35:54 2024 +0900
+
+    Update README.md
+
+[33mcommit 1730a65a520dd2b7de54b6de363104fd6614a951[m
+Author: haazz <gkwldnjs121@gmail.com>
+Date:   Sat Aug 31 17:33:04 2024 +0900
+
+    feat: readme
+
+[33mcommit 0ef35550f1fc044a8b1a98da7b6b2902f19da00b[m
+Author: haazz <127824457+haazz@users.noreply.github.com>
+Date:   Sat Aug 31 17:24:58 2024 +0900
+
+    Update README.md
+
+[33mcommit 5214e93cd123d709b003e383ef971da1d937d733[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Sat Aug 31 16:48:14 2024 +0900
+
+    add : mainactivity navigation composable 추가
+
+[33mcommit 84f2f87a6a49bae2f56b709be61d75ec926225e2[m
+Merge: 5763116 fa45675
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Sat Aug 31 16:10:33 2024 +0900
+
+    Merge pull request #14 from EARTH-CPR/feature/savinglistapi
+    
+    Feature: 적금 목록 api 통신
+
+[33mcommit fa45675b4826065d9392047e44eacfd6be017886[m[33m ([m[1;31morigin/feature/savinglistapi[m[33m)[m
+Author: 박가희 <930_10@naver.com>
+Date:   Sat Aug 31 16:09:52 2024 +0900
+
+    Feature: 적금 목록 api 통신
+
+[33mcommit 5763116282d5a337512c3259edcc6512e558a4d0[m
+Merge: 94a2be5 d08da1f
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Sat Aug 31 15:36:00 2024 +0900
+
+    Merge pull request #13 from EARTH-CPR/feature/chverification
+    
+    feature : 미라킁모닝,운동 챌린지 검증 업로드
+
+[33mcommit d08da1feb99fa498c50a9ca72fea75215f112d20[m[33m ([m[1;31morigin/feature/chverification[m[33m)[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Sat Aug 31 15:29:24 2024 +0900
+
+    feature : 미라킁모닝,운동 챌린지 검증 업로드
+
+[33mcommit 94a2be505a99e2d2b8a55f1918aa0c64d6411666[m
+Author: 박가희 <930_10@naver.com>
+Date:   Sat Aug 31 13:52:39 2024 +0900
+
+    Add: 챌린지 이미지 추가
+
+[33mcommit e07c977904c5255abd28e451c797b7a9e2e8286e[m
+Merge: 6c971e2 7763ac7
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Sat Aug 31 12:36:56 2024 +0900
+
+    Merge pull request #12 from EARTH-CPR/feature/chverification
+    
+    feature: 챌린지 검증 완료
+
+[33mcommit 7763ac74dd5f58442567377938b2232b8061e092[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Sat Aug 31 12:33:12 2024 +0900
+
+    feature: 챌린지 검증 완료
+
+[33mcommit 6c971e2e18fd65de238c465c6581e674fa1cc8a4[m
+Merge: c82d974 0e2f53d
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Sat Aug 31 12:30:04 2024 +0900
+
+    Conflict: 병합 충돌 해결 완료
+
+[33mcommit c82d974ac39305335656eda79712654d58837386[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Sat Aug 31 12:22:42 2024 +0900
+
+    modify : ApiService.kt , build.gradle.kts , misc.xml , other.xml , Project_Default.xml push
+
+[33mcommit 0e2f53d2b7a0e82a087ae42737c9747f47df2bbd[m
+Merge: 604613d 534855b
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Sat Aug 31 12:19:15 2024 +0900
+
+    Merge pull request #11 from EARTH-CPR/feature/homeedit
+    
+    Feature: 홈화면 챌린지 바로가기 구현 완료
+
+[33mcommit 534855b223de28d5b6dfbea4ddf08bb0449cedd6[m[33m ([m[1;31morigin/feature/homeedit[m[33m)[m
+Author: 박가희 <930_10@naver.com>
+Date:   Sat Aug 31 12:07:59 2024 +0900
+
+    Feature: 홈화면 챌린지 바로가기 구현 완료
+
+[33mcommit 604613d5b41c3a262adb41877648b5892e62fd70[m
+Author: 박가희 <930_10@naver.com>
+Date:   Sat Aug 31 04:57:55 2024 +0900
+
+    Feature: 챌린지 달성 내역 완료
+
+[33mcommit 9cb0b054c9e13005597f59a3f0a0b1d5bdda310e[m
+Merge: b8512c2 dd0892c
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Sat Aug 31 01:43:17 2024 +0900
+
+    Merge pull request #10 from EARTH-CPR/feature/main
+    
+    Feature: 로그인, 회원가입 Api 통신 완료
+
+[33mcommit dd0892c09e900e087af3e7aa92f3816ad38f6365[m[33m ([m[1;31morigin/feature/main[m[33m)[m
+Author: 박가희 <930_10@naver.com>
+Date:   Sat Aug 31 01:42:15 2024 +0900
+
+    Feature: 로그인, 회원가입 Api 통신 완료
+
+[33mcommit b8512c2b5afd080a9ab9e2b9296a466faa22bd97[m
+Author: 박가희 <930_10@naver.com>
+Date:   Fri Aug 30 17:38:19 2024 +0900
+
+    Edit: 이자율 계산 로직 수정
+
+[33mcommit 9364d4440b4f4effa5cc7dd27387f26a6a740abe[m
+Author: 박가희 <930_10@naver.com>
+Date:   Fri Aug 30 17:37:18 2024 +0900
+
+    Edit: 이자율 계산 로직 수정
+
+[33mcommit aa24ee6345b35e7571c9ada9be6631095339f9ea[m[33m ([m[1;31morigin/feature/challenge_check[m[33m)[m
+Author: 이윤호 <dldbsgh00005@gmail.com>
+Date:   Thu Aug 29 01:59:17 2024 +0900
+
+     Add: 이미지 업로드 및 전송 기능 구현
+
+[33mcommit 9116169e741bd63541603f2e74646944002cc2da[m
+Merge: aee2f51 fcb9280
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Wed Aug 28 01:25:18 2024 +0900
+
+    Merge pull request #5 from EARTH-CPR/feature/fix-top-banner
+    
+    Fix: 마이 화면에서 padding 제거
+
+[33mcommit fcb9280bbd3a8fbed80b236574f3c04bd04da335[m[33m ([m[1;31morigin/feature/fix-top-banner[m[33m)[m
+Author: godheezzang <930_10@naver.com>
+Date:   Wed Aug 28 01:24:55 2024 +0900
+
+    Fix: 마이 화면에서 padding 제거
+
+[33mcommit aee2f51019970bddc2e19d5ff394a860a375b881[m
+Merge: d89d904 36a0a53
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Wed Aug 28 01:21:48 2024 +0900
+
+    Merge pull request #4 from EARTH-CPR/feature/join_accountselect
+    
+    Add: 적금 가입 시, 입출금 계좌 선택화면
+
+[33mcommit 36a0a53fcd88fa73276dbc61f911c34be69a9d26[m[33m ([m[1;31morigin/feature/join_accountselect[m[33m)[m
+Author: godheezzang <930_10@naver.com>
+Date:   Wed Aug 28 01:21:18 2024 +0900
+
+    Add: 적금 가입 시, 입출금 계좌 선택화면
+
+[33mcommit d89d904757c04ed5c05c986fb085cc5896b59601[m
+Merge: 7549ed9 15a3e50
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Tue Aug 27 23:20:07 2024 +0900
+
+    Merge pull request #3 from EARTH-CPR/feature/main
+    
+    메인 페이지 구현
+
+[33mcommit 15a3e5021cc249b11139c1c26d834e9813d0ccca[m
+Author: godheezzang <930_10@naver.com>
+Date:   Tue Aug 27 23:15:51 2024 +0900
+
+    Modify: 적금 상품 조회
+
+[33mcommit e081efb7851a5cdf728b495b6825fb96c04a9cce[m
+Author: 박가희 <930_10@naver.com>
+Date:   Tue Aug 27 08:59:52 2024 +0900
+
+    Add: 적금 리스트 화면 진행중
+
+[33mcommit 42ade19b22a06f546f1c697f2a0b59dea634b7ab[m
+Author: 박가희 <930_10@naver.com>
+Date:   Mon Aug 26 23:57:48 2024 +0900
+
+    Add: 메인 페이지 구현
+
+[33mcommit 7549ed929fce93abb6652e5eb283d2e22e6c5db5[m
+Merge: ecc645f edcb621
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Sat Aug 24 01:27:49 2024 +0900
+
+    Merge pull request #2 from EARTH-CPR/feature/savings
+    
+    Add: 적금 가입부터 계좌 상세 페이지까지 구현
+
+[33mcommit edcb621ff48a5344423a3bee4fa8d0d6f8329992[m[33m ([m[1;31morigin/feature/savings[m[33m)[m
+Author: godheezzang <930_10@naver.com>
+Date:   Sat Aug 24 01:27:00 2024 +0900
+
+    Add: 적금 가입부터 계좌 상세 페이지까지 구현
+
+[33mcommit ecc645f1257795808cae0d8098482612711a93f8[m
+Merge: 469a7f1 ba1f7a5
+Author: 박가희 <153144067+godheezzang@users.noreply.github.com>
+Date:   Fri Aug 23 00:07:12 2024 +0900
+
+    Merge pull request #1 from EARTH-CPR/feature/join
+    
+    Add: 회원가입 기능 구현
+
+[33mcommit ba1f7a534c59206d5f0c65f1f12e33969d3b85ce[m[33m ([m[1;31morigin/feature/join[m[33m)[m
+Author: godheezzang <930_10@naver.com>
+Date:   Fri Aug 23 00:06:17 2024 +0900
+
+    Add: 회원가입 기능 구현
+
+[33mcommit 469a7f109408fa2bbc76f4558e1669b7edfa7387[m
+Author: godheezzang <930_10@naver.com>
+Date:   Sun Aug 18 19:15:38 2024 +0900
+
+    Add: 로그인 페이지 구현 및 프로젝트 세팅
+
+[33mcommit c7127cf5cea3f42de6b938372a6d11166d021710[m
+Author: godheezzang <930_10@naver.com>
+Date:   Sun Aug 18 17:56:18 2024 +0900
+
+    Create: 새 프로젝트 생성
+
+[33mcommit 507b08f7d54bb10bfb88c700a9210940b6cf7b69[m
+Author: godheezzang <930_10@naver.com>
+Date:   Sun Aug 18 17:55:33 2024 +0900
+
+    first commit
