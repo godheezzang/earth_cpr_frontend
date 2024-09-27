@@ -47,7 +47,7 @@ cd Frontend
 <br>
 
 ##### 미라클 모닝 챌린지 검증
-<img src="./readmeImage/leeyunho/video/MiracleMorningVerification.gif" >
+<img src="./readmeImage/leeyunho/video/MiracleMorningVerification.gif" > 
 <br>
 
 ##### 텀블러 챌린지 검증
