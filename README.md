@@ -45,14 +45,18 @@ cd Frontend
 #### 챌린지 인증 및 검증 
 ##### 챌린지 인증 페이지 접근 > 이미지 업로드,전송 및 검증 
 <br>
+
 ##### 미라클 모닝 챌린지 검증
 <img src="./readmeImage/leeyunho/video/MiracleMorningVerification.gif" >
-<p/>
+<br>
+
 ##### 텀블러 챌린지 검증
 <img src="./readmeImage/leeyunho/video/TumblerVerification.gif" >
-<p/>
+<br>
+
 ##### 운동 챌린지 검증
 <img src="./readmeImage/leeyunho/video/WorkOutVerification.gif" >
+<br>
 
 1. 적금 상품 선택 <br>
 2. 가입할 예적금 계좌 선택 <br>
