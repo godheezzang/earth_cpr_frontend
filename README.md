@@ -119,6 +119,8 @@ cd Frontend
 | <div align="center"><strong>적금 상품 목록 조회</strong></div>    | <div align="center"><strong>단계별 적금 가입하기</strong></div>                                       |
 | <div align="center"><img src="./readmeImage/saving_product_list.gif" width=300px></div> | <table><tr><td><img src="./readmeImage/create_mysaving.gif" width="300px"></td><td>1. 적금 상품 선택 <br> 2. 가입할 예적금 계좌 선택 <br> 3. 적금 가입 금액 선택 <br> 4. 적금 가입 기간 선택 <br> 5. 완료 및 방금 가입한 적금 정보 확인 화면 렌더링 <br> 6. 챌린지 인증 이미지 업로드, 전송 및 검증 화면 <br>(미라클 모닝 > 텀블러 > 운동 순서)</td></tr></table> |
 
+---
+
 ### 담당: 이윤호
 #### 챌린지 인증 및 검증
 ##### 챌린지 인증 페이지 접근 > 이미지 업로드,전송 및 검증 
