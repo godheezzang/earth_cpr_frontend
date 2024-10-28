@@ -109,45 +109,23 @@ cd Frontend
 ```
 
 ## 실행 화면
-#### 회원가입 [담당: 박가희]
-<img src="./readmeImage/join.gif" width=300px>
+### 담당: 박가희
 
-#### 로그인 및 적금 유무별 화면 렌더링 변화 [담당: 박가희]
-##### 사용자가 가입된 적금이 있는 경우
-<img src="./readmeImage/login.gif" width=300px>
+| <div align="center"><strong>회원가입</strong></div>                | <div align="center"><strong>로그인</strong></div>                                                      |
+|------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| <div align="center"><img src="./readmeImage/join.gif" width=300px></div> | <div align="center"><img src="./readmeImage/login.gif" width=300px> <img src="./readmeImage/login_nosavings.gif" width=300px></div> |
+| <div align="center"><strong>사용자가 가입한 적금 목록 및 챌린지 조회</strong></div> | <div align="center"><strong>홈 화면에서 바로 챌린지 확인하기</strong></div>                            |
+| <div align="center"><img src="./readmeImage/check_my_savings_challenge.gif" width=300px></div> | <div align="center"><img src="./readmeImage/check_challenge_from_home.gif" width=300px></div>         |
+| <div align="center"><strong>적금 상품 목록 조회</strong></div>    | <div align="center"><strong>단계별 적금 가입하기</strong></div>                                       |
+| <div align="center"><img src="./readmeImage/saving_product_list.gif" width=300px></div> | <table><tr><td><img src="./readmeImage/create_mysaving.gif" width="300px"></td><td>1. 적금 상품 선택 <br> 2. 가입할 예적금 계좌 선택 <br> 3. 적금 가입 금액 선택 <br> 4. 적금 가입 기간 선택 <br> 5. 완료 및 방금 가입한 적금 정보 확인 화면 렌더링 <br> 6. 챌린지 인증 이미지 업로드, 전송 및 검증 화면 <br>(미라클 모닝 > 텀블러 > 운동 순서)</td></tr></table> |
 
-##### 사용자가 가입된 적금이 없는 경우
-<img src="./readmeImage/login_nosavings.gif" width=300px>
-
-#### 사용자가 가입한 적금 목록 및 챌린지 조회 [담당: 박가희]
-<img src="./readmeImage/check_my_savings_challenge.gif" width=300px>
-
-##### 홈 화면에서 바로 챌린지 확인하기
-<img src="./readmeImage/check_challenge_from_home.gif" width=300px>
-
-#### 적금 상품 목록 조회 [담당: 박가희]
-<img src="./readmeImage/saving_product_list.gif" width=300px>
-
-#### 단계별 적금 가입하기 [담당: 박가희]
-<img src="./readmeImage/create_mysaving.gif" width=300px>
-
-1. 적금 상품 선택 <br>
-2. 가입할 예적금 계좌 선택 <br>
-3. 적금 가입 금액 선택 <br>
-4. 적금 가입 기간 선택 <br>
-5. 완료 및 방금 가입한 적금 정보 확인 화면 렌더링 <br>
-6. 챌린지 인증 이미지 업로드,전송 및 검증 화면 ( 미라클 모닝 > 텀블러 > 운동 순서 ) <br> 
-
+### 담당: 이윤호
 #### 챌린지 인증 및 검증
 ##### 챌린지 인증 페이지 접근 > 이미지 업로드,전송 및 검증 
-##### 미라클 모닝 챌린지 검증
-<img src="./readmeImage/leeyunho/video/MiracleMorningVerification.gif" > 
 
-##### 텀블러 챌린지 검증
-<img src="./readmeImage/leeyunho/video/TumblerVerification.gif" >
-
-##### 운동 챌린지 검증
-<img src="./readmeImage/leeyunho/video/WorkOutVerification.gif" >
+| **미라클 모닝 챌린지 검증**                                        | **텀블러 챌린지 검증**                                      | **운동 챌린지 검증**                                      |
+|--------------------------------------------------------------------|-------------------------------------------------------------|-----------------------------------------------------------|
+| <img src="./readmeImage/leeyunho/video/MiracleMorningVerification.gif" width="300px"> | <img src="./readmeImage/leeyunho/video/TumblerVerification.gif" width="300px"> | <img src="./readmeImage/leeyunho/video/WorkOutVerification.gif" width="300px"> |
 
 
 
