@@ -70,6 +70,7 @@
 
 [FE] 
 <ul>
+<li>Figma를 활용한 UI/UX 설계</li>
 <li>Kotlin을 활용한 android 어플리케이션 개발</li>
 </ul>
 [BE]
@@ -118,16 +119,16 @@ cd Frontend
 ##### 사용자가 가입된 적금이 없는 경우
 <img src="./readmeImage/login_nosavings.gif" width=300px>
 
-#### 사용자가 가입한 적금 목록 및 챌린지 조회
+#### 사용자가 가입한 적금 목록 및 챌린지 조회 [담당: 박가희]
 <img src="./readmeImage/check_my_savings_challenge.gif" width=300px>
 
 ##### 홈 화면에서 바로 챌린지 확인하기
 <img src="./readmeImage/check_challenge_from_home.gif" width=300px>
 
-#### 적금 상품 목록 조회
+#### 적금 상품 목록 조회 [담당: 박가희]
 <img src="./readmeImage/saving_product_list.gif" width=300px>
 
-#### 단계별 적금 가입하기
+#### 단계별 적금 가입하기 [담당: 박가희]
 <img src="./readmeImage/create_mysaving.gif" width=300px>
 
 1. 적금 상품 선택 <br>
@@ -139,19 +140,14 @@ cd Frontend
 
 #### 챌린지 인증 및 검증
 ##### 챌린지 인증 페이지 접근 > 이미지 업로드,전송 및 검증 
-<br>
-
 ##### 미라클 모닝 챌린지 검증
 <img src="./readmeImage/leeyunho/video/MiracleMorningVerification.gif" > 
-<br>
 
 ##### 텀블러 챌린지 검증
 <img src="./readmeImage/leeyunho/video/TumblerVerification.gif" >
-<br>
 
 ##### 운동 챌린지 검증
 <img src="./readmeImage/leeyunho/video/WorkOutVerification.gif" >
-<br>
 
 
 
